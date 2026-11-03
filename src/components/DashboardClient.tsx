@@ -288,7 +288,7 @@ export default function DashboardClient() {
                       max={20}
                       value={draftDailyEn}
                       onChange={(e) => setDraftDailyEn(Number(e.target.value))}
-                      className="w-full rounded-lg border border-white/15 bg-[#18181f] px-3 py-2 text-base font-bold text-white focus:border-[#D4AF37] focus:outline-none"
+                      className="w-full rounded-lg border border-white/15 bg-[#18181f] px-3 py-2 text-base font-bold text-white focus:ring-1 focus:ring-[#D4AF37] focus:outline-none"
                     />
                     <span className="text-sm font-medium text-zinc-300 shrink-0">과 / 일</span>
                   </div>
@@ -306,7 +306,7 @@ export default function DashboardClient() {
                       max={20}
                       value={draftDailyJa}
                       onChange={(e) => setDraftDailyJa(Number(e.target.value))}
-                      className="w-full rounded-lg border border-white/15 bg-[#18181f] px-3 py-2 text-base font-bold text-white focus:border-[#D4AF37] focus:outline-none"
+                      className="w-full rounded-lg border border-white/15 bg-[#18181f] px-3 py-2 text-base font-bold text-white focus:ring-1 focus:ring-[#D4AF37] focus:outline-none"
                     />
                     <span className="text-sm font-medium text-zinc-300 shrink-0">과 / 일</span>
                   </div>
@@ -324,7 +324,7 @@ export default function DashboardClient() {
                       max={10}
                       value={draftReviewCount}
                       onChange={(e) => setDraftReviewCount(Number(e.target.value))}
-                      className="w-full rounded-lg border border-white/15 bg-[#18181f] px-3 py-2 text-base font-bold text-white focus:border-[#D4AF37] focus:outline-none"
+                      className="w-full rounded-lg border border-white/15 bg-[#18181f] px-3 py-2 text-base font-bold text-white focus:ring-1 focus:ring-[#D4AF37] focus:outline-none"
                     />
                     <span className="text-sm font-medium text-zinc-300 shrink-0">회 복습</span>
                   </div>
