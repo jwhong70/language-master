@@ -477,11 +477,10 @@ export default function LessonPlayerClient({
                   <button
                     type="button"
                     onClick={handlePlayAllLesson}
-                    className={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 sm:py-2 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
-                      playbackMode === 'all_lesson'
-                        ? 'bg-[#D4AF37] text-black shadow-lg'
-                        : 'border border-[#D4AF37]/50 bg-[#D4AF37]/15 text-[#FDE68A] hover:bg-[#D4AF37] hover:text-black'
-                    }`}
+                    className={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 sm:py-2 text-xs sm:text-sm font-bold transition-all cursor-pointer ${playbackMode === 'all_lesson'
+                      ? 'bg-[#D4AF37] text-black shadow-lg'
+                      : 'border border-[#D4AF37]/50 bg-[#D4AF37]/15 text-[#FDE68A] hover:bg-[#D4AF37] hover:text-black'
+                      }`}
                   >
                     <ListMusic className="h-4 w-4 shrink-0" />
                     <span>
@@ -502,32 +501,34 @@ export default function LessonPlayerClient({
             </div>
           </div>
 
-          {/* 사용 안내 팁 바 */}
-          <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-white/8 bg-[#0c0c10] px-3.5 py-2.5 text-xs text-zinc-400">
-            <span>
+          {/* 사용 안내 팁 바: 모바일 2행 분리 */}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 rounded-xl border border-white/8 bg-[#0c0c10] px-3.5 py-2.5 text-xs text-zinc-400">
+            <span className="w-full sm:w-auto">
               💡 각 문단의 <strong className="text-[#FDE68A]">[문단 연속 듣기]</strong>, 각 문장의{' '}
               <strong className="text-[#FDE68A]">[1문장 듣기]</strong> ·{' '}
               <strong className="text-emerald-300">[1문장 반복]</strong> ·{' '}
-              <strong className="text-white">[해석·해설 펼침 메뉴]</strong>를 클릭해 학습하세요.
+              <strong className="text-white">[해석·해설 펼침]</strong> 버튼을 터치해 학습하세요.
             </span>
 
-            {/* 재생 배속 선택 */}
-            <div className="flex items-center gap-1">
-              <span className="text-[11px] text-zinc-500 mr-1">배속:</span>
-              {[0.75, 0.9, 1.0, 1.15, 1.25].map((rate) => (
-                <button
-                  key={rate}
-                  type="button"
-                  onClick={() => setPlaybackRate(rate)}
-                  className={`rounded px-2 py-0.5 text-xs font-mono font-semibold cursor-pointer ${
-                    playbackRate === rate
-                      ? 'bg-[#D4AF37] text-black'
-                      : 'bg-white/5 text-zinc-400 hover:text-white'
-                  }`}
-                >
-                  {rate}x
-                </button>
-              ))}
+            {/* 재생 배속 선택 (모바일 단독 1행) */}
+            <div className="flex items-center justify-between sm:justify-end gap-1 w-full sm:w-auto pt-2 sm:pt-0 border-t sm:border-t-0 border-white/5">
+              <span className="text-[11px] text-zinc-500 mr-1 shrink-0">배속:</span>
+              <div className="flex items-center gap-1">
+                {[0.75, 0.9, 1.0, 1.15, 1.25].map((rate) => (
+                  <button
+                    key={rate}
+                    type="button"
+                    onClick={() => setPlaybackRate(rate)}
+                    className={`rounded px-2.5 py-1 sm:py-0.5 text-xs font-mono font-semibold cursor-pointer ${
+                      playbackRate === rate
+                        ? 'bg-[#D4AF37] text-black font-bold'
+                        : 'bg-white/5 text-zinc-400 hover:text-white'
+                    }`}
+                  >
+                    {rate}x
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -559,11 +560,10 @@ export default function LessonPlayerClient({
               return (
                 <section
                   key={para.paragraph_index}
-                  className={`rounded-2xl border transition-all p-4 sm:p-6 space-y-4 ${
-                    isParaPlaying
-                      ? 'border-[#D4AF37]/70 bg-[#16161f] shadow-lg'
-                      : 'border-white/10 bg-[#121217]'
-                  }`}
+                  className={`rounded-2xl border transition-all p-4 sm:p-6 space-y-4 ${isParaPlaying
+                    ? 'border-[#D4AF37]/70 bg-[#16161f] shadow-lg'
+                    : 'border-white/10 bg-[#121217]'
+                    }`}
                 >
                   {/* 문단 헤더 + 한 문단씩 읽어주는 기능 버튼 */}
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 border-b border-white/10 pb-3">
@@ -581,11 +581,10 @@ export default function LessonPlayerClient({
                       onClick={() =>
                         handlePlayParagraph(para.paragraph_index, para.sentences)
                       }
-                      className={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl px-3.5 py-2.5 sm:py-1.5 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
-                        isParaPlaying
-                          ? 'bg-[#D4AF37] text-black shadow-md'
-                          : 'border border-[#D4AF37]/40 bg-[#D4AF37]/10 text-[#FDE68A] hover:bg-[#D4AF37] hover:text-black'
-                      }`}
+                      className={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl px-3.5 py-2.5 sm:py-1.5 text-xs sm:text-sm font-bold transition-all cursor-pointer ${isParaPlaying
+                        ? 'bg-[#D4AF37] text-black shadow-md'
+                        : 'border border-[#D4AF37]/40 bg-[#D4AF37]/10 text-[#FDE68A] hover:bg-[#D4AF37] hover:text-black'
+                        }`}
                     >
                       {isParaPlaying ? (
                         <>
@@ -617,11 +616,10 @@ export default function LessonPlayerClient({
                           ref={(el) => {
                             sentenceCardRefs.current[sentence.id] = el;
                           }}
-                          className={`rounded-xl border transition-all ${
-                            isCurrentActive
-                              ? 'border-[#D4AF37] bg-[#1b1b26] shadow-lg'
-                              : 'border-white/10 bg-[#0e0e13] hover:border-white/20'
-                          }`}
+                          className={`rounded-xl border transition-all ${isCurrentActive
+                            ? 'border-[#D4AF37] bg-[#1b1b26] shadow-lg'
+                            : 'border-white/10 bg-[#0e0e13] hover:border-white/20'
+                            }`}
                         >
                           {/* 문장 상단 영역 */}
                           <div className="p-4 sm:p-5 flex flex-col gap-3">
@@ -633,11 +631,10 @@ export default function LessonPlayerClient({
                                 className="flex-1 text-left flex items-start gap-3 cursor-pointer group"
                               >
                                 <span
-                                  className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-mono font-bold ${
-                                    isCurrentActive
-                                      ? 'bg-[#D4AF37] text-black'
-                                      : 'bg-white/10 text-zinc-400 group-hover:text-white'
-                                  }`}
+                                  className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-mono font-bold ${isCurrentActive
+                                    ? 'bg-[#D4AF37] text-black'
+                                    : 'bg-white/10 text-zinc-400 group-hover:text-white'
+                                    }`}
                                 >
                                   {sentence.sentence_index}
                                 </span>
@@ -647,22 +644,22 @@ export default function LessonPlayerClient({
                               </button>
                             </div>
 
-                            {/* 문장 하단 컨트롤 바: [1문장 듣기] [1문장 반복] [해석·해설 펼침 메뉴] */}
+                            {/* 문장 하단 컨트롤 바: 모바일 1줄에 1버튼씩 완전 분리 (줄바꿈 원천 차단) */}
                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pt-1 pl-0 sm:pl-9">
-                              <div className="grid grid-cols-2 gap-2 w-full sm:w-auto sm:flex sm:items-center">
+                              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
                                 {/* 1문장 읽어주는 버튼 */}
                                 <button
                                   type="button"
                                   onClick={() => handlePlaySingleSentence(sentence)}
-                                  className={`inline-flex items-center justify-center gap-1.5 rounded-lg px-3 py-2 sm:py-1.5 text-xs font-bold transition-all cursor-pointer ${
+                                  className={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 sm:py-1.5 text-xs font-bold transition-all cursor-pointer ${
                                     isSinglePlaying
-                                      ? 'bg-[#D4AF37] text-black'
+                                      ? 'bg-[#D4AF37] text-black shadow-md'
                                       : 'border border-white/15 bg-[#171720] text-zinc-200 hover:border-[#D4AF37]/60 hover:text-[#FDE68A]'
                                   }`}
                                 >
                                   {isSinglePlaying ? (
                                     <>
-                                      <Square className="h-3 w-3 fill-current shrink-0" />
+                                      <Square className="h-3.5 w-3.5 fill-current shrink-0" />
                                       <span>1문장 정지</span>
                                     </>
                                   ) : (
@@ -677,17 +674,17 @@ export default function LessonPlayerClient({
                                 <button
                                   type="button"
                                   onClick={() => handleLoopSentence(sentence)}
-                                  className={`inline-flex items-center justify-center gap-1.5 rounded-lg px-3 py-2 sm:py-1.5 text-xs font-bold transition-all cursor-pointer ${
+                                  className={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 sm:py-1.5 text-xs font-bold transition-all cursor-pointer ${
                                     isLoopingThis
                                       ? 'bg-emerald-400 text-black shadow-md'
                                       : 'border border-white/15 bg-[#171720] text-zinc-200 hover:border-emerald-400/60 hover:text-emerald-300'
                                   }`}
                                 >
                                   <Repeat className="h-3.5 w-3.5 shrink-0" />
-                                  <span className="truncate">
+                                  <span>
                                     {isLoopingThis
-                                      ? `반복 (${loopCounter}회)`
-                                      : '1문장 반복'}
+                                      ? `1문장 반복 중 (${loopCounter}회차 · 정지)`
+                                      : '1문장 반복 듣기'}
                                   </span>
                                 </button>
                               </div>
@@ -696,7 +693,7 @@ export default function LessonPlayerClient({
                               <button
                                 type="button"
                                 onClick={() => toggleSentenceAccordion(sentence.id)}
-                                className={`w-full sm:w-auto inline-flex items-center justify-center gap-1 rounded-lg px-3 py-2 sm:py-1.5 text-xs font-semibold transition-colors cursor-pointer ${
+                                className={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 sm:py-1.5 text-xs font-semibold transition-colors cursor-pointer ${
                                   isOpen
                                     ? 'bg-[#D4AF37]/20 text-[#FDE68A] border border-[#D4AF37]/40'
                                     : 'bg-white/5 text-zinc-300 hover:bg-white/10 hover:text-white border border-white/10'

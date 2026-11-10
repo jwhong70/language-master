@@ -659,21 +659,21 @@ export default function DashboardClient() {
                               </div>
                             </Link>
 
-                            {/* 액션 버튼 바: 모바일 2열 균등 그리드(w-full), 데스크톱 우측 정렬 */}
-                            <div className="grid grid-cols-2 sm:flex items-center gap-2 w-full sm:w-auto pt-2.5 sm:pt-0 border-t sm:border-t-0 border-white/5 shrink-0">
+                            {/* 액션 버튼 바: 모바일 1버튼 1행(w-full), 데스크톱 우측 정렬 */}
+                            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto pt-2.5 sm:pt-0 border-t sm:border-t-0 border-white/5 shrink-0">
                               <button
                                 type="button"
                                 onClick={(e) => handleQuickIncrement(e, lesson)}
-                                className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#D4AF37]/40 bg-[#D4AF37]/10 px-3 py-2.5 sm:py-2 text-xs font-bold text-[#FDE68A] hover:bg-[#D4AF37] hover:text-black transition-all cursor-pointer"
+                                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#D4AF37]/40 bg-[#D4AF37]/10 px-4 py-2.5 sm:py-2 text-xs font-bold text-[#FDE68A] hover:bg-[#D4AF37] hover:text-black transition-all cursor-pointer"
                                 title="진도 카운트 +1 증가"
                               >
                                 <CheckCircle2 className="h-4 w-4 shrink-0" />
-                                <span className="truncate">완료 +1 ({lesson.completed_count}/{totalTargetCount})</span>
+                                <span>완료 +1 ({lesson.completed_count}/{totalTargetCount})</span>
                               </button>
 
                               <Link
                                 href={`/lesson/${lesson.lang}/${lesson.lesson_number}`}
-                                className="inline-flex items-center justify-center gap-1 rounded-xl bg-[#D4AF37] px-3.5 py-2.5 sm:py-2 text-xs sm:text-sm font-bold text-black hover:bg-[#e5c247] transition-colors"
+                                className="w-full sm:w-auto inline-flex items-center justify-center gap-1 rounded-xl bg-[#D4AF37] px-4 py-2.5 sm:py-2 text-xs sm:text-sm font-bold text-black hover:bg-[#e5c247] transition-colors"
                               >
                                 <span>본문 학습</span>
                                 <ChevronRight className="h-4 w-4 shrink-0" />
