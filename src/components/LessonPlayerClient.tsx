@@ -406,44 +406,48 @@ export default function LessonPlayerClient({
 
   return (
     <div className="min-h-screen bg-[#0a0a0c] text-[#f4f4f6] pb-36">
-      {/* 상단 고정 네비게이션 */}
+      {/* 상단 고정 네비게이션: 모바일 2행 분리 */}
       <header className="sticky top-0 z-30 border-b border-white/10 bg-[#0a0a0c]/95 backdrop-blur-md">
-        <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-3 sm:px-6">
-          <Link
-            href="/"
-            onClick={() => stopAudio()}
-            className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-[#14141a] px-3 py-1.5 text-xs sm:text-sm font-semibold text-zinc-200 hover:border-[#D4AF37]/50 hover:text-[#FDE68A] transition-colors"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            <span>To-Do 진도표</span>
-          </Link>
+        <div className="mx-auto flex max-w-4xl flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 px-4 py-2.5 sm:px-6">
+          <div className="flex items-center justify-between w-full sm:w-auto">
+            <Link
+              href="/"
+              onClick={() => stopAudio()}
+              className="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-[#14141a] px-3 py-1.5 text-xs sm:text-sm font-semibold text-zinc-200 hover:border-[#D4AF37]/50 hover:text-[#FDE68A] transition-colors"
+            >
+              <ArrowLeft className="h-3.5 w-3.5" />
+              <span>To-Do 진도표</span>
+            </Link>
 
-          <div className="flex items-center gap-2">
-            <span className="rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/15 px-3 py-1 text-xs font-bold text-[#FDE68A]">
+            <div className="flex items-center gap-1.5">
+              {lessonNumber > 1 && (
+                <Link
+                  href={`/lesson/${lang}/${lessonNumber - 1}`}
+                  onClick={() => stopAudio()}
+                  className="rounded-lg border border-white/10 bg-[#14141a] p-1.5 text-zinc-300 hover:border-white/30 hover:text-white"
+                  title="이전 과"
+                >
+                  <ArrowLeft className="h-4 w-4" />
+                </Link>
+              )}
+              {lessonNumber < 120 && (
+                <Link
+                  href={`/lesson/${lang}/${lessonNumber + 1}`}
+                  onClick={() => stopAudio()}
+                  className="rounded-lg border border-white/10 bg-[#14141a] p-1.5 text-zinc-300 hover:border-white/30 hover:text-white"
+                  title="다음 과"
+                >
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              )}
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center sm:justify-end w-full sm:w-auto">
+            <span className="w-full sm:w-auto text-center rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/15 px-3 py-1 text-xs font-bold text-[#FDE68A]">
               학습 횟수: {lesson.completed_count} / {totalTargetCount}회
               {isGraduated ? ' (졸업 완료)' : ''}
             </span>
-
-            {lessonNumber > 1 && (
-              <Link
-                href={`/lesson/${lang}/${lessonNumber - 1}`}
-                onClick={() => stopAudio()}
-                className="rounded-lg border border-white/10 bg-[#14141a] p-1.5 text-zinc-300 hover:border-white/30 hover:text-white"
-                title="이전 과"
-              >
-                <ArrowLeft className="h-4 w-4" />
-              </Link>
-            )}
-            {lessonNumber < 120 && (
-              <Link
-                href={`/lesson/${lang}/${lessonNumber + 1}`}
-                onClick={() => stopAudio()}
-                className="rounded-lg border border-white/10 bg-[#14141a] p-1.5 text-zinc-300 hover:border-white/30 hover:text-white"
-                title="다음 과"
-              >
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            )}
           </div>
         </div>
       </header>
