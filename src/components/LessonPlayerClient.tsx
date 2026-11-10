@@ -717,23 +717,13 @@ export default function LessonPlayerClient({
                           {/* 아코디언 펼침 영역: 한글 해석(KO) + 어휘·문법 해설(NOTE) */}
                           {isOpen && (
                             <div className="border-t border-white/10 bg-[#14141d] px-4 py-4 sm:px-6 pl-9 sm:pl-12 space-y-3 rounded-b-xl">
-                              <div className="space-y-1">
-                                <span className="inline-block rounded bg-[#D4AF37]/20 px-2 py-0.5 text-[11px] font-bold text-[#FDE68A]">
-                                  한글 해석
-                                </span>
-                                <p className="text-sm sm:text-base font-bold text-white leading-relaxed">
-                                  {sentence.ko}
-                                </p>
-                              </div>
+                              <p className="text-sm sm:text-base font-bold text-white leading-relaxed">
+                                {sentence.ko}
+                              </p>
 
                               {sentence.note && (
-                                <div className="space-y-1.5 border-t border-white/8 pt-2.5">
-                                  <span className="inline-block rounded bg-emerald-500/20 px-2 py-0.5 text-[11px] font-bold text-emerald-300">
-                                    핵심 표현 & 문법 해설
-                                  </span>
-                                  <div className="space-y-1">
-                                    {renderFormattedNote(sentence.note)}
-                                  </div>
+                                <div className="space-y-1 border-t border-white/8 pt-2.5">
+                                  {renderFormattedNote(sentence.note)}
                                 </div>
                               )}
                             </div>
