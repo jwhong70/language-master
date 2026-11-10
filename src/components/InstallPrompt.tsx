@@ -165,7 +165,7 @@ export default function InstallPrompt() {
                 e.stopPropagation();
                 handleInstallClick();
               }}
-              className="rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#F59E0B] px-3.5 py-2 text-xs font-bold text-black shadow-lg transition-transform active:scale-95 hover:brightness-110 cursor-pointer"
+              className="rounded-xl bg-linear-to-r from-[#D4AF37] to-[#F59E0B] px-3.5 py-2 text-xs font-bold text-black shadow-lg transition-transform active:scale-95 hover:brightness-110 cursor-pointer"
             >
               {isKakao ? "브라우저로 열기" : "1초 설치"}
             </button>
