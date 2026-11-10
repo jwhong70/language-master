@@ -452,7 +452,7 @@ export default function LessonPlayerClient({
         {/* 과 타이틀 & 전체 오디오/해설 컨트롤 헤더 */}
         <section className="rounded-2xl border border-white/12 bg-[#131318] p-5 sm:p-6 shadow-xl space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <div className="space-y-1.5">
+            <div className="space-y-1.5 w-full sm:w-auto">
               <div className="flex items-center gap-2">
                 <span className="rounded-md bg-[#D4AF37] px-2.5 py-0.5 text-xs font-extrabold text-black">
                   {lang === 'en' ? 'ENGLISH' : 'JAPANESE'} · LESSON{' '}
@@ -467,19 +467,19 @@ export default function LessonPlayerClient({
               </h1>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto pt-2 sm:pt-0 border-t sm:border-t-0 border-white/5">
               {lesson.has_content && (
                 <>
                   <button
                     type="button"
                     onClick={handlePlayAllLesson}
-                    className={`inline-flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                    className={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 sm:py-2 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                       playbackMode === 'all_lesson'
                         ? 'bg-[#D4AF37] text-black shadow-lg'
                         : 'border border-[#D4AF37]/50 bg-[#D4AF37]/15 text-[#FDE68A] hover:bg-[#D4AF37] hover:text-black'
                     }`}
                   >
-                    <ListMusic className="h-4 w-4" />
+                    <ListMusic className="h-4 w-4 shrink-0" />
                     <span>
                       {playbackMode === 'all_lesson' ? '전체 연속재생 정지' : '과 전체 연속 듣기'}
                     </span>
@@ -488,9 +488,9 @@ export default function LessonPlayerClient({
                   <button
                     type="button"
                     onClick={toggleAllAccordions}
-                    className="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-[#1a1a22] px-3.5 py-2 text-xs sm:text-sm font-semibold text-zinc-200 hover:border-white/30 transition-colors cursor-pointer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl border border-white/15 bg-[#1a1a22] px-4 py-2.5 sm:py-2 text-xs sm:text-sm font-semibold text-zinc-200 hover:border-white/30 transition-colors cursor-pointer"
                   >
-                    <BookOpen className="h-4 w-4 text-[#D4AF37]" />
+                    <BookOpen className="h-4 w-4 text-[#D4AF37] shrink-0" />
                     <span>{allExpanded ? '해석·해설 모두 접기' : '해석·해설 모두 펼치기'}</span>
                   </button>
                 </>
@@ -562,9 +562,9 @@ export default function LessonPlayerClient({
                   }`}
                 >
                   {/* 문단 헤더 + 한 문단씩 읽어주는 기능 버튼 */}
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-white/10 pb-3">
-                    <div className="flex items-center gap-2">
-                      <span className="rounded-md bg-white/10 px-2 py-0.5 text-xs font-mono font-bold text-[#D4AF37]">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 border-b border-white/10 pb-3">
+                    <div className="flex items-center gap-2 w-full sm:w-auto">
+                      <span className="rounded-md bg-white/10 px-2 py-0.5 text-xs font-mono font-bold text-[#D4AF37] shrink-0">
                         문단 {para.paragraph_index}
                       </span>
                       <h2 className="text-base sm:text-lg font-bold text-white">
@@ -577,7 +577,7 @@ export default function LessonPlayerClient({
                       onClick={() =>
                         handlePlayParagraph(para.paragraph_index, para.sentences)
                       }
-                      className={`inline-flex items-center gap-1.5 self-start sm:self-auto rounded-xl px-3.5 py-1.5 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                      className={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl px-3.5 py-2.5 sm:py-1.5 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                         isParaPlaying
                           ? 'bg-[#D4AF37] text-black shadow-md'
                           : 'border border-[#D4AF37]/40 bg-[#D4AF37]/10 text-[#FDE68A] hover:bg-[#D4AF37] hover:text-black'
@@ -585,12 +585,12 @@ export default function LessonPlayerClient({
                     >
                       {isParaPlaying ? (
                         <>
-                          <Square className="h-3.5 w-3.5 fill-current" />
+                          <Square className="h-3.5 w-3.5 fill-current shrink-0" />
                           <span>문단 읽기 정지</span>
                         </>
                       ) : (
                         <>
-                          <Volume2 className="h-4 w-4" />
+                          <Volume2 className="h-4 w-4 shrink-0" />
                           <span>이 문단 연속 읽어주기 ({para.sentences.length}문장)</span>
                         </>
                       )}
@@ -643,14 +643,14 @@ export default function LessonPlayerClient({
                               </button>
                             </div>
 
-                            {/* 문장 하단 컨트롤 바: [1문장 읽기] [1문장 반복] [해석·해설 펼침 메뉴] */}
-                            <div className="flex flex-wrap items-center justify-between gap-2 pt-1 pl-9">
-                              <div className="flex flex-wrap items-center gap-2">
+                            {/* 문장 하단 컨트롤 바: [1문장 듣기] [1문장 반복] [해석·해설 펼침 메뉴] */}
+                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pt-1 pl-0 sm:pl-9">
+                              <div className="grid grid-cols-2 gap-2 w-full sm:w-auto sm:flex sm:items-center">
                                 {/* 1문장 읽어주는 버튼 */}
                                 <button
                                   type="button"
                                   onClick={() => handlePlaySingleSentence(sentence)}
-                                  className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-bold transition-all cursor-pointer ${
+                                  className={`inline-flex items-center justify-center gap-1.5 rounded-lg px-3 py-2 sm:py-1.5 text-xs font-bold transition-all cursor-pointer ${
                                     isSinglePlaying
                                       ? 'bg-[#D4AF37] text-black'
                                       : 'border border-white/15 bg-[#171720] text-zinc-200 hover:border-[#D4AF37]/60 hover:text-[#FDE68A]'
@@ -658,12 +658,12 @@ export default function LessonPlayerClient({
                                 >
                                   {isSinglePlaying ? (
                                     <>
-                                      <Square className="h-3 w-3 fill-current" />
+                                      <Square className="h-3 w-3 fill-current shrink-0" />
                                       <span>1문장 정지</span>
                                     </>
                                   ) : (
                                     <>
-                                      <Play className="h-3.5 w-3.5 fill-current text-[#D4AF37]" />
+                                      <Play className="h-3.5 w-3.5 fill-current text-[#D4AF37] shrink-0" />
                                       <span>1문장 듣기</span>
                                     </>
                                   )}
@@ -673,17 +673,17 @@ export default function LessonPlayerClient({
                                 <button
                                   type="button"
                                   onClick={() => handleLoopSentence(sentence)}
-                                  className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-bold transition-all cursor-pointer ${
+                                  className={`inline-flex items-center justify-center gap-1.5 rounded-lg px-3 py-2 sm:py-1.5 text-xs font-bold transition-all cursor-pointer ${
                                     isLoopingThis
                                       ? 'bg-emerald-400 text-black shadow-md'
                                       : 'border border-white/15 bg-[#171720] text-zinc-200 hover:border-emerald-400/60 hover:text-emerald-300'
                                   }`}
                                 >
-                                  <Repeat className="h-3.5 w-3.5" />
-                                  <span>
+                                  <Repeat className="h-3.5 w-3.5 shrink-0" />
+                                  <span className="truncate">
                                     {isLoopingThis
-                                      ? `1문장 반복 중 (${loopCounter}회차 · 정지)`
-                                      : '1문장 반복 듣기'}
+                                      ? `반복 (${loopCounter}회)`
+                                      : '1문장 반복'}
                                   </span>
                                 </button>
                               </div>
@@ -692,7 +692,7 @@ export default function LessonPlayerClient({
                               <button
                                 type="button"
                                 onClick={() => toggleSentenceAccordion(sentence.id)}
-                                className={`inline-flex items-center gap-1 rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors cursor-pointer ${
+                                className={`w-full sm:w-auto inline-flex items-center justify-center gap-1 rounded-lg px-3 py-2 sm:py-1.5 text-xs font-semibold transition-colors cursor-pointer ${
                                   isOpen
                                     ? 'bg-[#D4AF37]/20 text-[#FDE68A] border border-[#D4AF37]/40'
                                     : 'bg-white/5 text-zinc-300 hover:bg-white/10 hover:text-white border border-white/10'
@@ -700,9 +700,9 @@ export default function LessonPlayerClient({
                               >
                                 <span>{isOpen ? '한글 해석·해설 접기' : '한글 해석·해설 펼치기'}</span>
                                 {isOpen ? (
-                                  <ChevronUp className="h-3.5 w-3.5" />
+                                  <ChevronUp className="h-3.5 w-3.5 shrink-0" />
                                 ) : (
-                                  <ChevronDown className="h-3.5 w-3.5" />
+                                  <ChevronDown className="h-3.5 w-3.5 shrink-0" />
                                 )}
                               </button>
                             </div>
@@ -757,15 +757,15 @@ export default function LessonPlayerClient({
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2.5 shrink-0">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 w-full sm:w-auto shrink-0">
             <button
               type="button"
               onClick={handleCompleteStudy}
-              className="inline-flex items-center gap-2 rounded-xl bg-[#D4AF37] px-5 py-3 text-sm sm:text-base font-extrabold text-black hover:bg-[#e5c247] transition-all shadow-lg cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-[#D4AF37] px-5 py-3 text-sm sm:text-base font-extrabold text-black hover:bg-[#e5c247] transition-all shadow-lg cursor-pointer"
             >
-              <CheckCircle2 className="h-5 w-5" />
+              <CheckCircle2 className="h-5 w-5 shrink-0" />
               <span>
-                학습 완료 (Count +1 · 현재 {lesson.completed_count}/{totalTargetCount})
+                학습 완료 (Count +1 · {lesson.completed_count}/{totalTargetCount})
               </span>
             </button>
 
@@ -775,7 +775,7 @@ export default function LessonPlayerClient({
                 stopAudio();
                 router.push('/');
               }}
-              className="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-[#1b1b24] px-4 py-3 text-xs sm:text-sm font-bold text-zinc-200 hover:border-white/30 cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl border border-white/15 bg-[#1b1b24] px-4 py-3 text-xs sm:text-sm font-bold text-zinc-200 hover:border-white/30 cursor-pointer"
             >
               <span>진도표 확인</span>
             </button>
@@ -785,15 +785,15 @@ export default function LessonPlayerClient({
 
       {/* 하단 고정(Sticky) 오디오 & 완료 플로팅 컨트롤 바 */}
       <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-[#D4AF37]/30 bg-[#0e0e14]/95 backdrop-blur-md">
-        <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6">
+        <div className="mx-auto flex max-w-4xl flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 px-4 py-2.5 sm:px-6">
           {/* 현재 오디오 재생 상태 표시 */}
-          <div className="flex items-center gap-3 min-w-0">
+          <div className="flex items-center justify-between sm:justify-start gap-3 min-w-0">
             {playbackMode !== 'idle' ? (
-              <>
+              <div className="flex items-center gap-2.5 min-w-0">
                 <button
                   type="button"
                   onClick={handleTogglePause}
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#D4AF37] text-black hover:bg-[#e5c247] cursor-pointer"
+                  className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full bg-[#D4AF37] text-black hover:bg-[#e5c247] cursor-pointer"
                   title={isPaused ? '다시 재생' : '일시정지'}
                 >
                   {isPaused ? (
@@ -805,35 +805,33 @@ export default function LessonPlayerClient({
                 <button
                   type="button"
                   onClick={stopAudio}
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white hover:bg-white/15 cursor-pointer"
+                  className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white hover:bg-white/15 cursor-pointer"
                   title="정지"
                 >
-                  <Square className="h-4 w-4 fill-current" />
+                  <Square className="h-3.5 w-3.5 fill-current" />
                 </button>
                 <div className="min-w-0">
                   <p className="text-xs font-bold text-[#FDE68A] truncate">
                     {playbackMode === 'single' && '▶️ 1문장 재생 중'}
                     {playbackMode === 'loop_sentence' &&
-                      `🔁 1문장 무한반복 중 (${loopCounter}회차)`}
+                      `🔁 1문장 반복 중 (${loopCounter}회)`}
                     {playbackMode === 'paragraph' &&
-                      `📄 문단 ${activeParagraphIdx} 연속 재생 중`}
-                    {playbackMode === 'all_lesson' && '🎵 과 전체 연속 재생 중'}
+                      `📄 문단 ${activeParagraphIdx} 재생 중`}
+                    {playbackMode === 'all_lesson' && '🎵 전체 연속 재생 중'}
                   </p>
-                  <p className="text-xs text-zinc-400 truncate">
+                  <p className="text-[11px] text-zinc-400 truncate">
                     배속 {playbackRate}x · 문장 클릭 시 즉시 이동
                   </p>
                 </div>
-              </>
+              </div>
             ) : (
-              <div className="flex items-center gap-2 text-xs sm:text-sm text-zinc-400">
+              <div className="flex items-center gap-2 text-xs sm:text-sm text-zinc-400 truncate">
                 <Volume2 className="h-4 w-4 text-[#D4AF37] shrink-0" />
-                <span>문단 또는 문장의 재생/반복 버튼을 눌러 원어민 음성을 들어보세요.</span>
+                <span className="truncate">문장/문단의 재생 버튼을 눌러보세요.</span>
               </div>
             )}
-          </div>
 
-          {/* 우측 하단 빠른 완료 버튼 */}
-          <div className="flex items-center gap-2 ml-auto">
+            {/* 모바일 우측 초기화 버튼 */}
             {lesson.completed_count > 0 && (
               <button
                 type="button"
@@ -842,7 +840,25 @@ export default function LessonPlayerClient({
                   setLesson({ ...lesson, completed_count: 0, last_studied_at: null });
                   toast.info('이 과의 학습 횟수를 0회로 초기화했습니다.');
                 }}
-                className="rounded-lg border border-white/10 p-2 text-zinc-400 hover:text-white cursor-pointer"
+                className="sm:hidden rounded-lg border border-white/10 p-2 text-zinc-400 hover:text-white cursor-pointer shrink-0"
+                title="카운트 0으로 초기화"
+              >
+                <RotateCcw className="h-3.5 w-3.5" />
+              </button>
+            )}
+          </div>
+
+          {/* 우측 하단 빠른 완료 버튼: 모바일에서는 전폭(w-full) */}
+          <div className="flex items-center gap-2 w-full sm:w-auto">
+            {lesson.completed_count > 0 && (
+              <button
+                type="button"
+                onClick={async () => {
+                  await updateLessonCompletion(lesson.id, 0);
+                  setLesson({ ...lesson, completed_count: 0, last_studied_at: null });
+                  toast.info('이 과의 학습 횟수를 0회로 초기화했습니다.');
+                }}
+                className="hidden sm:inline-flex rounded-lg border border-white/10 p-2 text-zinc-400 hover:text-white cursor-pointer"
                 title="카운트 0으로 초기화"
               >
                 <RotateCcw className="h-4 w-4" />
@@ -852,9 +868,9 @@ export default function LessonPlayerClient({
             <button
               type="button"
               onClick={handleCompleteStudy}
-              className="inline-flex items-center gap-1.5 rounded-xl bg-[#D4AF37] px-4 py-2 text-xs sm:text-sm font-extrabold text-black hover:bg-[#e5c247] transition-colors cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl bg-[#D4AF37] px-4 py-2.5 text-xs sm:text-sm font-extrabold text-black hover:bg-[#e5c247] transition-colors cursor-pointer"
             >
-              <CheckCircle2 className="h-4 w-4" />
+              <CheckCircle2 className="h-4 w-4 shrink-0" />
               <span>
                 완료 Count +1 ({lesson.completed_count}/{totalTargetCount})
               </span>
