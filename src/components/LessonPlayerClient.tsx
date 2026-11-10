@@ -453,52 +453,55 @@ export default function LessonPlayerClient({
       </header>
 
       <main className="mx-auto max-w-4xl px-4 pt-6 sm:px-6 space-y-6">
-        {/* 과 타이틀 & 전체 오디오/해설 컨트롤 헤더 */}
+        {/* 과 타이틀 & 전체 오디오/해설 컨트롤 헤더: 완전 1행 1요소 수직 스택 */}
         <section className="rounded-2xl border border-white/12 bg-[#131318] p-5 sm:p-6 shadow-xl space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <div className="space-y-1.5 w-full sm:w-auto">
-              <div className="flex items-center gap-2">
-                <span className="rounded-md bg-[#D4AF37] px-2.5 py-0.5 text-xs font-extrabold text-black">
-                  {lang === 'en' ? 'ENGLISH' : 'JAPANESE'} · LESSON{' '}
-                  {String(lessonNumber).padStart(3, '0')}
-                </span>
-                <span className="text-xs text-zinc-400">
-                  {lesson.paragraph_count}개 문단 · 총 {lesson.sentence_count}문장
-                </span>
-              </div>
-              <h1 className="text-xl sm:text-2xl font-extrabold tracking-tight text-white select-none">
-                {lesson.title}
-              </h1>
+          <div className="flex flex-col gap-2.5 w-full">
+            {/* 1행: 언어 및 과 번호 배지 */}
+            <div>
+              <span className="inline-block rounded-md bg-[#D4AF37] px-2.5 py-1 text-xs font-extrabold text-black tracking-wider">
+                {lang === 'en' ? 'ENGLISH' : 'JAPANESE'} · LESSON{' '}
+                {String(lessonNumber).padStart(3, '0')}
+              </span>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto pt-2 sm:pt-0 border-t sm:border-t-0 border-white/5">
-              {lesson.has_content && (
-                <>
-                  <button
-                    type="button"
-                    onClick={handlePlayAllLesson}
-                    className={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 sm:py-2 text-xs sm:text-sm font-bold transition-all cursor-pointer ${playbackMode === 'all_lesson'
+            {/* 2행: 문단 및 문장 수 정보 */}
+            <div className="text-xs text-zinc-400 font-medium">
+              {lesson.paragraph_count}개 문단 · 총 {lesson.sentence_count}개 문장 수록
+            </div>
+
+            {/* 3행: 과 제목 */}
+            <h1 className="text-xl sm:text-2xl font-extrabold tracking-tight text-white select-none pt-0.5">
+              {lesson.title}
+            </h1>
+
+            {/* 4행 & 5행: 전체 재생 및 해설 펼침 버튼 (각각 1행씩 완전 분리) */}
+            {lesson.has_content && (
+              <div className="flex flex-col gap-2.5 w-full pt-3 border-t border-white/10">
+                <button
+                  type="button"
+                  onClick={handlePlayAllLesson}
+                  className={`w-full inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                    playbackMode === 'all_lesson'
                       ? 'bg-[#D4AF37] text-black shadow-lg'
                       : 'border border-[#D4AF37]/50 bg-[#D4AF37]/15 text-[#FDE68A] hover:bg-[#D4AF37] hover:text-black'
-                      }`}
-                  >
-                    <ListMusic className="h-4 w-4 shrink-0" />
-                    <span>
-                      {playbackMode === 'all_lesson' ? '전체 연속재생 정지' : '과 전체 연속 듣기'}
-                    </span>
-                  </button>
+                  }`}
+                >
+                  <ListMusic className="h-4 w-4 shrink-0" />
+                  <span>
+                    {playbackMode === 'all_lesson' ? '전체 연속재생 정지' : '과 전체 연속 듣기'}
+                  </span>
+                </button>
 
-                  <button
-                    type="button"
-                    onClick={toggleAllAccordions}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl border border-white/15 bg-[#1a1a22] px-4 py-2.5 sm:py-2 text-xs sm:text-sm font-semibold text-zinc-200 hover:border-white/30 transition-colors cursor-pointer"
-                  >
-                    <BookOpen className="h-4 w-4 text-[#D4AF37] shrink-0" />
-                    <span>{allExpanded ? '해석·해설 모두 접기' : '해석·해설 모두 펼치기'}</span>
-                  </button>
-                </>
-              )}
-            </div>
+                <button
+                  type="button"
+                  onClick={toggleAllAccordions}
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-[#1a1a22] px-4 py-3 text-xs sm:text-sm font-semibold text-zinc-200 hover:border-white/30 transition-colors cursor-pointer"
+                >
+                  <BookOpen className="h-4 w-4 text-[#D4AF37] shrink-0" />
+                  <span>{allExpanded ? '해석·해설 모두 접기' : '해석·해설 모두 펼치기'}</span>
+                </button>
+              </div>
+            )}
           </div>
 
           {/* 사용 안내 팁 바: 모바일 2행 분리 */}
@@ -565,26 +568,28 @@ export default function LessonPlayerClient({
                     : 'border-white/10 bg-[#121217]'
                     }`}
                 >
-                  {/* 문단 헤더 + 한 문단씩 읽어주는 기능 버튼 */}
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 border-b border-white/10 pb-3">
-                    <div className="flex items-center gap-2 w-full sm:w-auto">
-                      <span className="rounded-md bg-white/10 px-2 py-0.5 text-xs font-mono font-bold text-[#D4AF37] shrink-0">
+                  {/* 문단 헤더: 완전 1행 1요소 분리 (줄바꿈 원천 차단) */}
+                  <div className="flex flex-col gap-2 border-b border-white/10 pb-3.5">
+                    <div className="flex items-center gap-2">
+                      <span className="rounded-md bg-white/10 px-2.5 py-0.5 text-xs font-mono font-bold text-[#D4AF37]">
                         문단 {para.paragraph_index}
                       </span>
-                      <h2 className="text-base sm:text-lg font-bold text-white">
-                        {para.paragraph_title}
-                      </h2>
                     </div>
+
+                    <h2 className="text-base sm:text-lg font-bold text-white leading-snug">
+                      {para.paragraph_title}
+                    </h2>
 
                     <button
                       type="button"
                       onClick={() =>
                         handlePlayParagraph(para.paragraph_index, para.sentences)
                       }
-                      className={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl px-3.5 py-2.5 sm:py-1.5 text-xs sm:text-sm font-bold transition-all cursor-pointer ${isParaPlaying
-                        ? 'bg-[#D4AF37] text-black shadow-md'
-                        : 'border border-[#D4AF37]/40 bg-[#D4AF37]/10 text-[#FDE68A] hover:bg-[#D4AF37] hover:text-black'
-                        }`}
+                      className={`w-full inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                        isParaPlaying
+                          ? 'bg-[#D4AF37] text-black shadow-md'
+                          : 'border border-[#D4AF37]/40 bg-[#D4AF37]/10 text-[#FDE68A] hover:bg-[#D4AF37] hover:text-black'
+                      }`}
                     >
                       {isParaPlaying ? (
                         <>
