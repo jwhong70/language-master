@@ -166,11 +166,11 @@ export default function DashboardClient() {
         return [{ lang: 'en', label: '🇺🇸 영어 (English 120과)', items: enStats.todoLessons }];
       }
       if (settings.active_lang === 'ja') {
-        return [{ lang: 'ja', label: '🇯🇵 일본어 (Japanese 120과)', items: jaStats.todoLessons }];
+        return [{ lang: 'ja', label: '🇯🇵 일본어 (Japanese 90과)', items: jaStats.todoLessons }];
       }
       return [
         { lang: 'en', label: '🇺🇸 영어 (English 120과)', items: enStats.todoLessons },
-        { lang: 'ja', label: '🇯🇵 일본어 (Japanese 120과)', items: jaStats.todoLessons },
+        { lang: 'ja', label: '🇯🇵 일본어 (Japanese 90과)', items: jaStats.todoLessons },
       ];
     }, [settings.active_lang, enStats.todoLessons, jaStats.todoLessons]);
 
@@ -207,7 +207,7 @@ export default function DashboardClient() {
                 LANGUAGE MASTER
               </h1>
               <p className="text-xs text-zinc-400">
-                영어 120과 · 일본어 120과 누적 복습 트레이닝
+                영어 120과 · 일본어 90과 누적 복습 트레이닝
               </p>
             </div>
           </div>
@@ -276,6 +276,62 @@ export default function DashboardClient() {
             </div>
 
             <form onSubmit={handleSaveSettings} className="space-y-4">
+              {/* 학습 언어 모드 선택 */}
+              <div className="rounded-xl border border-white/10 bg-[#0d0d11] p-4">
+                <label className="block text-xs font-semibold text-zinc-400 mb-2">
+                  🎯 학습 진행 언어 설정
+                </label>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                  <button
+                    type="button"
+                    onClick={() => handleLanguageSwitch('en')}
+                    className={`rounded-lg p-3 text-left transition-all border cursor-pointer ${
+                      settings.active_lang === 'en'
+                        ? 'border-[#D4AF37] bg-[#D4AF37]/15 text-white'
+                        : 'border-white/10 bg-[#16161c] text-zinc-400 hover:border-white/20'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-sm font-bold text-white">🇺🇸 영어만 진행</span>
+                      {settings.active_lang === 'en' && <Check className="h-4 w-4 text-[#D4AF37]" />}
+                    </div>
+                    <p className="text-xs text-zinc-400">영어 120과 진도 집중</p>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => handleLanguageSwitch('ja')}
+                    className={`rounded-lg p-3 text-left transition-all border cursor-pointer ${
+                      settings.active_lang === 'ja'
+                        ? 'border-[#D4AF37] bg-[#D4AF37]/15 text-white'
+                        : 'border-white/10 bg-[#16161c] text-zinc-400 hover:border-white/20'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-sm font-bold text-white">🇯🇵 일본어만 진행</span>
+                      {settings.active_lang === 'ja' && <Check className="h-4 w-4 text-[#D4AF37]" />}
+                    </div>
+                    <p className="text-xs text-zinc-400">일본어 90과 진도 집중</p>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => handleLanguageSwitch('all')}
+                    className={`rounded-lg p-3 text-left transition-all border cursor-pointer ${
+                      settings.active_lang === 'all'
+                        ? 'border-[#D4AF37] bg-[#D4AF37]/15 text-white'
+                        : 'border-white/10 bg-[#16161c] text-zinc-400 hover:border-white/20'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-sm font-bold text-white">🌏 둘 다 진행</span>
+                      {settings.active_lang === 'all' && <Check className="h-4 w-4 text-[#D4AF37]" />}
+                    </div>
+                    <p className="text-xs text-zinc-400">영어 + 일본어 동시 To-Do</p>
+                  </button>
+                </div>
+              </div>
+
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                 <div className="rounded-xl border border-white/10 bg-[#0d0d11] p-4">
                   <label className="block text-xs font-semibold text-zinc-400 mb-1.5">
@@ -398,15 +454,15 @@ export default function DashboardClient() {
 
           <div className="rounded-2xl border border-white/10 bg-[#131318] p-4 sm:p-5">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold text-zinc-400">🇯🇵 일본어 120과 진행률</span>
+              <span className="text-xs font-semibold text-zinc-400">🇯🇵 일본어 90과 진행률</span>
               <span className="text-xs font-mono font-bold text-emerald-400">
-                {jaStats.graduatedCount} / 120과 졸업
+                {jaStats.graduatedCount} / 90과 졸업
               </span>
             </div>
             <div className="mt-2.5 h-2 w-full overflow-hidden rounded-full bg-white/10">
               <div
                 className="h-full rounded-full bg-emerald-400 transition-all duration-500"
-                style={{ width: `${Math.min(100, (jaStats.graduatedCount / 120) * 100)}%` }}
+                style={{ width: `${Math.min(100, (jaStats.graduatedCount / 90) * 100)}%` }}
               />
             </div>
             <p className="mt-2 text-xs text-zinc-400">
@@ -439,7 +495,7 @@ export default function DashboardClient() {
                   : 'border border-white/10 bg-[#131318] text-zinc-300 hover:border-white/25'
               }`}
             >
-              🇯🇵 일본어 (Japanese 120과)
+              🇯🇵 일본어 (Japanese 90과)
             </button>
             <button
               type="button"
@@ -477,7 +533,7 @@ export default function DashboardClient() {
               }`}
             >
               <Layers className="h-4 w-4 text-emerald-400" />
-              전체 120과 목록
+              전체 커리큘럼 목록
             </button>
           </div>
         </section>

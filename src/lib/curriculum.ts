@@ -43,9 +43,13 @@ export function buildAll120Lessons(
   const seedMap = getSeedLessonsMap();
   const result: LessonData[] = [];
 
-  const langs: LanguageCode[] = ['en', 'ja'];
-  for (const lang of langs) {
-    for (let num = 1; num <= 120; num++) {
+  const langConfigs: { lang: LanguageCode; total: number }[] = [
+    { lang: 'en', total: 120 },
+    { lang: 'ja', total: 90 },
+  ];
+
+  for (const { lang, total } of langConfigs) {
+    for (let num = 1; num <= total; num++) {
       const id = `${lang}_${String(num).padStart(3, '0')}`;
       const seeded = seedMap.get(id);
       const prog = progressMap[id];
