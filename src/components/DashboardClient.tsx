@@ -194,9 +194,9 @@ export default function DashboardClient() {
  }, [lessons, currentCurriculumLang, curriculumFilter, totalTargetCount]);
 
  return (
- <div className="min-h-screen bg-[#0a0a0c] text-[#f4f4f6] pb-20">
+ <div className="min-h-screen bg-[#F9F8F6] text-[#1A1A1A] pb-20">
  {/* 상단 헤더: 모바일 2행 완전 분리 */}
- <header className="sticky top-0 z-30 border-b border-white/10 bg-[#0a0a0c]/90 backdrop-blur-md">
+ <header className="sticky top-0 z-30 border-b border-black/10 bg-[#F9F8F6]/95 backdrop-blur-md">
  <div className="mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-4 py-3 sm:px-6">
  {/* 1행: 로고 및 타이틀 (모바일 100% 전폭 단독 점유) */}
  <div className="flex items-center gap-3 w-full sm:w-auto">
@@ -204,10 +204,10 @@ export default function DashboardClient() {
  <BookOpen className="h-5 w-5" />
  </div>
  <div className="min-w-0">
- <h1 className="text-xl sm:text-2xl font-extrabold tracking-tight text-white select-none whitespace-nowrap">
+ <h1 className="text-xl sm:text-2xl font-extrabold tracking-tight text-gray-900 select-none whitespace-nowrap">
  LANGUAGE MASTER
  </h1>
- <p className="text-xs text-zinc-400 whitespace-nowrap">
+ <p className="text-xs text-gray-600 whitespace-nowrap">
  영어 120과 · 일본어 90과 누적 복습 트레이닝
  </p>
  </div>
@@ -248,7 +248,7 @@ export default function DashboardClient() {
  setDraftReviewCount(settings.review_count);
  setShowSettingsModal((prev) => !prev);
  }}
- className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 border border-[#D4AF37]/40 bg-[#16161a] px-3.5 py-2.5 sm:py-2 text-xs sm:text-sm font-semibold text-[#FDE68A] hover:bg-[#D4AF37]/15 transition-colors cursor-pointer"
+ className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 border border-black/15 bg-[#1F1F1F] px-3.5 py-2.5 sm:py-2 text-xs sm:text-sm font-semibold text-gray-900 hover:bg-[#2B2B2B] hover:border-[#D4AF37] transition-colors cursor-pointer shadow-xs"
  >
  <Settings className="h-4 w-4 text-[#D4AF37]" />
  <span>진도 설정</span>
@@ -260,18 +260,18 @@ export default function DashboardClient() {
  <main className="mx-auto max-w-5xl px-4 pt-6 sm:px-6 space-y-6">
  {/* 진도 설정 모달/패널 */}
  {showSettingsModal && (
- <section className="border border-[#D4AF37]/40 bg-[#131318] p-5 sm:p-6 shadow-2xl">
- <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
+ <section className="border border-black/15 border-l-4 border-l-[#D4AF37] bg-white p-5 sm:p-6 shadow-md">
+ <div className="flex items-center justify-between border-b border-black/10 pb-3 mb-4">
  <div className="flex items-center gap-2">
  <Settings className="h-5 w-5 text-[#D4AF37]" />
- <h2 className="text-base sm:text-lg font-bold text-white">
+ <h2 className="text-base sm:text-lg font-bold text-gray-900">
  일일 학습 분량 및 복습 횟수 설정
  </h2>
  </div>
  <button
  type="button"
  onClick={() => setShowSettingsModal(false)}
- className="text-xs text-zinc-400 hover:text-white cursor-pointer"
+ className="text-xs text-gray-600 hover:text-gray-900 cursor-pointer"
  >
  닫기 ✕
  </button>
@@ -279,8 +279,8 @@ export default function DashboardClient() {
 
  <form onSubmit={handleSaveSettings} className="space-y-4">
  {/* 학습 언어 모드 선택 */}
- <div className="border border-white/10 bg-[#0d0d11] p-4">
- <label className="block text-xs font-semibold text-zinc-400 mb-2">
+ <div className="border border-black/10 bg-[#FAF9F5] p-4">
+ <label className="block text-xs font-semibold text-gray-600 mb-2">
  🎯 학습 진행 언어 설정
  </label>
  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
@@ -289,15 +289,15 @@ export default function DashboardClient() {
  onClick={() => handleLanguageSwitch('en')}
  className={`p-3 text-left transition-all border cursor-pointer ${
  settings.active_lang === 'en'
- ? 'border-[#D4AF37] bg-[#D4AF37]/15 text-white'
- : 'border-white/10 bg-[#16161c] text-zinc-400 hover:border-white/20'
+ ? 'border-[#D4AF37] bg-[#D4AF37]/15 text-gray-900'
+ : 'border-black/10 bg-white text-gray-600 hover:border-white/20'
  }`}
  >
  <div className="flex items-center justify-between mb-1">
- <span className="text-sm font-bold text-white">🇺🇸 영어만 진행</span>
+ <span className="text-sm font-bold text-gray-900">🇺🇸 영어만 진행</span>
  {settings.active_lang === 'en' && <Check className="h-4 w-4 text-[#D4AF37]" />}
  </div>
- <p className="text-xs text-zinc-400">영어 120과 진도 집중</p>
+ <p className="text-xs text-gray-600">영어 120과 진도 집중</p>
  </button>
 
  <button
@@ -305,15 +305,15 @@ export default function DashboardClient() {
  onClick={() => handleLanguageSwitch('ja')}
  className={`p-3 text-left transition-all border cursor-pointer ${
  settings.active_lang === 'ja'
- ? 'border-[#D4AF37] bg-[#D4AF37]/15 text-white'
- : 'border-white/10 bg-[#16161c] text-zinc-400 hover:border-white/20'
+ ? 'border-[#D4AF37] bg-[#D4AF37]/15 text-gray-900'
+ : 'border-black/10 bg-white text-gray-600 hover:border-white/20'
  }`}
  >
  <div className="flex items-center justify-between mb-1">
- <span className="text-sm font-bold text-white">🇯🇵 일본어만 진행</span>
+ <span className="text-sm font-bold text-gray-900">🇯🇵 일본어만 진행</span>
  {settings.active_lang === 'ja' && <Check className="h-4 w-4 text-[#D4AF37]" />}
  </div>
- <p className="text-xs text-zinc-400">일본어 90과 진도 집중</p>
+ <p className="text-xs text-gray-600">일본어 90과 진도 집중</p>
  </button>
 
  <button
@@ -321,22 +321,22 @@ export default function DashboardClient() {
  onClick={() => handleLanguageSwitch('all')}
  className={`p-3 text-left transition-all border cursor-pointer ${
  settings.active_lang === 'all'
- ? 'border-[#D4AF37] bg-[#D4AF37]/15 text-white'
- : 'border-white/10 bg-[#16161c] text-zinc-400 hover:border-white/20'
+ ? 'border-[#D4AF37] bg-[#D4AF37]/15 text-gray-900'
+ : 'border-black/10 bg-white text-gray-600 hover:border-white/20'
  }`}
  >
  <div className="flex items-center justify-between mb-1">
- <span className="text-sm font-bold text-white">🌏 둘 다 진행</span>
+ <span className="text-sm font-bold text-gray-900">🌏 둘 다 진행</span>
  {settings.active_lang === 'all' && <Check className="h-4 w-4 text-[#D4AF37]" />}
  </div>
- <p className="text-xs text-zinc-400">영어 + 일본어 동시 To-Do</p>
+ <p className="text-xs text-gray-600">영어 + 일본어 동시 To-Do</p>
  </button>
  </div>
  </div>
 
  <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
- <div className="border border-white/10 bg-[#0d0d11] p-4">
- <label className="block text-xs font-semibold text-zinc-400 mb-1.5">
+ <div className="border border-black/10 bg-[#FAF9F5] p-4">
+ <label className="block text-xs font-semibold text-gray-600 mb-1.5">
  🇺🇸 하루 영어 신규 학습 분량
  </label>
  <div className="flex items-center gap-2">
@@ -346,15 +346,15 @@ export default function DashboardClient() {
  max={20}
  value={draftDailyEn}
  onChange={(e) => setDraftDailyEn(Number(e.target.value))}
- className="w-full border border-white/15 bg-[#18181f] px-3 py-2 text-base font-bold text-white focus:ring-1 focus:ring-[#D4AF37] focus:outline-none"
+ className="w-full border border-white/15 bg-[#18181f] px-3 py-2 text-base font-bold text-gray-900 focus:ring-1 focus:ring-[#D4AF37] focus:outline-none"
  />
- <span className="text-sm font-medium text-zinc-300 shrink-0">과 / 일</span>
+ <span className="text-sm font-medium text-gray-700 shrink-0">과 / 일</span>
  </div>
- <p className="mt-1.5 text-xs text-zinc-500">기본 설정: 하루 1과</p>
+ <p className="mt-1.5 text-xs text-gray-500">기본 설정: 하루 1과</p>
  </div>
 
- <div className="border border-white/10 bg-[#0d0d11] p-4">
- <label className="block text-xs font-semibold text-zinc-400 mb-1.5">
+ <div className="border border-black/10 bg-[#FAF9F5] p-4">
+ <label className="block text-xs font-semibold text-gray-600 mb-1.5">
  🇯🇵 하루 일본어 신규 학습 분량
  </label>
  <div className="flex items-center gap-2">
@@ -364,15 +364,15 @@ export default function DashboardClient() {
  max={20}
  value={draftDailyJa}
  onChange={(e) => setDraftDailyJa(Number(e.target.value))}
- className="w-full border border-white/15 bg-[#18181f] px-3 py-2 text-base font-bold text-white focus:ring-1 focus:ring-[#D4AF37] focus:outline-none"
+ className="w-full border border-white/15 bg-[#18181f] px-3 py-2 text-base font-bold text-gray-900 focus:ring-1 focus:ring-[#D4AF37] focus:outline-none"
  />
- <span className="text-sm font-medium text-zinc-300 shrink-0">과 / 일</span>
+ <span className="text-sm font-medium text-gray-700 shrink-0">과 / 일</span>
  </div>
- <p className="mt-1.5 text-xs text-zinc-500">기본 설정: 하루 1과</p>
+ <p className="mt-1.5 text-xs text-gray-500">기본 설정: 하루 1과</p>
  </div>
 
- <div className="border border-white/10 bg-[#0d0d11] p-4">
- <label className="block text-xs font-semibold text-zinc-400 mb-1.5">
+ <div className="border border-black/10 bg-[#FAF9F5] p-4">
+ <label className="block text-xs font-semibold text-gray-600 mb-1.5">
  🔁 과당 필수 복습 횟수
  </label>
  <div className="flex items-center gap-2">
@@ -382,9 +382,9 @@ export default function DashboardClient() {
  max={10}
  value={draftReviewCount}
  onChange={(e) => setDraftReviewCount(Number(e.target.value))}
- className="w-full border border-white/15 bg-[#18181f] px-3 py-2 text-base font-bold text-white focus:ring-1 focus:ring-[#D4AF37] focus:outline-none"
+ className="w-full border border-white/15 bg-[#18181f] px-3 py-2 text-base font-bold text-gray-900 focus:ring-1 focus:ring-[#D4AF37] focus:outline-none"
  />
- <span className="text-sm font-medium text-zinc-300 shrink-0">회 복습</span>
+ <span className="text-sm font-medium text-gray-700 shrink-0">회 복습</span>
  </div>
  <p className="mt-1.5 text-xs text-[#D4AF37]">
  본학습 1회 + 복습 {draftReviewCount}회 = 총 {1 + Number(draftReviewCount)}회 완료 시 졸업
@@ -393,7 +393,7 @@ export default function DashboardClient() {
  </div>
 
  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-2">
- <p className="text-xs text-zinc-400">
+ <p className="text-xs text-gray-600">
  💡 본문에서 [학습 완료] 버튼을 누를 때마다 횟수가 +1 증가하며, 총 {1 + Number(draftReviewCount)}회가 채워지면 To-Do 진도표에서 자동으로 사라집니다.
  </p>
  <div className="flex items-center gap-2 self-end sm:self-auto">
@@ -404,7 +404,7 @@ export default function DashboardClient() {
  setDraftDailyJa(1);
  setDraftReviewCount(2);
  }}
- className="border border-white/15 px-3 py-2 text-xs font-medium text-zinc-300 hover:bg-white/5 cursor-pointer"
+ className="border border-white/15 px-3 py-2 text-xs font-medium text-gray-700 hover:bg-black/5 cursor-pointer"
  >
  기본값(1과·2회 복습) 복원
  </button>
@@ -422,12 +422,12 @@ export default function DashboardClient() {
 
  {/* 상단 요약 대시보드 카드 */}
  <section className="grid grid-cols-1 gap-3 sm:grid-cols-3">
- <div className="border border-white/10 bg-[#131318] p-4 sm:p-5">
+ <div className="border border-black/10 bg-white p-4 sm:p-5">
  <div className="flex items-center justify-between">
- <span className="text-xs font-semibold text-zinc-400">현재 학습 규칙</span>
+ <span className="text-xs font-semibold text-gray-600">현재 학습 규칙</span>
  <Sparkles className="h-4 w-4 text-[#D4AF37]" />
  </div>
- <p className="mt-2 text-base sm:text-lg font-bold text-white">
+ <p className="mt-2 text-base sm:text-lg font-bold text-gray-900">
  영어 {settings.daily_en_count}과 · 일어 {settings.daily_ja_count}과 / 일
  </p>
  <p className="mt-1 text-xs text-[#FDE68A]">
@@ -435,9 +435,9 @@ export default function DashboardClient() {
  </p>
  </div>
 
- <div className="border border-white/10 bg-[#131318] p-4 sm:p-5">
+ <div className="border border-black/10 bg-white p-4 sm:p-5">
  <div className="flex items-center justify-between">
- <span className="text-xs font-semibold text-zinc-400">🇺🇸 영어 120과 진행률</span>
+ <span className="text-xs font-semibold text-gray-600">🇺🇸 영어 120과 진행률</span>
  <span className="text-xs font-mono font-bold text-[#D4AF37]">
  {enStats.graduatedCount} / 120과 졸업
  </span>
@@ -448,15 +448,15 @@ export default function DashboardClient() {
  style={{ width: `${Math.min(100, (enStats.graduatedCount / 120) * 100)}%` }}
  />
  </div>
- <p className="mt-2 text-xs text-zinc-400">
- 오늘 To-Do <strong className="text-white">{enStats.todoLessons.length}개</strong> · 복습 진행 중{' '}
+ <p className="mt-2 text-xs text-gray-600">
+ 오늘 To-Do <strong className="text-gray-900">{enStats.todoLessons.length}개</strong> · 복습 진행 중{' '}
  <strong className="text-amber-300">{enStats.inReviewCount}개</strong>
  </p>
  </div>
 
- <div className="border border-white/10 bg-[#131318] p-4 sm:p-5">
+ <div className="border border-black/10 bg-white p-4 sm:p-5">
  <div className="flex items-center justify-between">
- <span className="text-xs font-semibold text-zinc-400">🇯🇵 일본어 90과 진행률</span>
+ <span className="text-xs font-semibold text-gray-600">🇯🇵 일본어 90과 진행률</span>
  <span className="text-xs font-mono font-bold text-emerald-400">
  {jaStats.graduatedCount} / 90과 졸업
  </span>
@@ -467,15 +467,15 @@ export default function DashboardClient() {
  style={{ width: `${Math.min(100, (jaStats.graduatedCount / 90) * 100)}%` }}
  />
  </div>
- <p className="mt-2 text-xs text-zinc-400">
- 오늘 To-Do <strong className="text-white">{jaStats.todoLessons.length}개</strong> · 복습 진행 중{' '}
+ <p className="mt-2 text-xs text-gray-600">
+ 오늘 To-Do <strong className="text-gray-900">{jaStats.todoLessons.length}개</strong> · 복습 진행 중{' '}
  <strong className="text-emerald-300">{jaStats.inReviewCount}개</strong>
  </p>
  </div>
  </section>
 
  {/* 언어 선택 & 뷰 모드 전환 바 */}
- <section className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-white/10 pb-4">
+ <section className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-black/10 pb-4">
  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
  <button
  type="button"
@@ -483,7 +483,7 @@ export default function DashboardClient() {
  className={`w-full sm:w-auto text-center px-4 py-2.5 sm:py-2 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
  settings.active_lang === 'en'
  ? 'bg-[#D4AF37] text-black shadow-lg'
- : 'border border-white/10 bg-[#131318] text-zinc-300 hover:border-white/25'
+ : 'border border-black/10 bg-white text-gray-700 hover:border-white/25'
  }`}
  >
  🇺🇸 영어 (English 120과)
@@ -494,7 +494,7 @@ export default function DashboardClient() {
  className={`w-full sm:w-auto text-center px-4 py-2.5 sm:py-2 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
  settings.active_lang === 'ja'
  ? 'bg-[#D4AF37] text-black shadow-lg'
- : 'border border-white/10 bg-[#131318] text-zinc-300 hover:border-white/25'
+ : 'border border-black/10 bg-white text-gray-700 hover:border-white/25'
  }`}
  >
  🇯🇵 일본어 (Japanese 90과)
@@ -505,7 +505,7 @@ export default function DashboardClient() {
  className={`w-full sm:w-auto text-center px-4 py-2.5 sm:py-2 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
  settings.active_lang === 'all'
  ? 'bg-[#D4AF37] text-black shadow-lg'
- : 'border border-white/10 bg-[#131318] text-zinc-300 hover:border-white/25'
+ : 'border border-black/10 bg-white text-gray-700 hover:border-white/25'
  }`}
  >
  🌏 영어 + 일본어 통합 진도표
@@ -518,8 +518,8 @@ export default function DashboardClient() {
  onClick={() => setViewTab('todo')}
  className={`inline-flex items-center justify-center gap-1.5 px-3 py-2.5 sm:py-1.5 text-xs sm:text-sm font-semibold transition-colors cursor-pointer ${
  viewTab === 'todo'
- ? 'bg-white/15 text-white border border-white/25'
- : 'text-zinc-400 hover:text-white border border-transparent'
+ ? 'bg-white/15 text-gray-900 border border-white/25'
+ : 'text-gray-600 hover:text-gray-900 border border-transparent'
  }`}
  >
  <CheckCircle2 className="h-4 w-4 text-[#D4AF37] shrink-0" />
@@ -530,8 +530,8 @@ export default function DashboardClient() {
  onClick={() => setViewTab('curriculum')}
  className={`inline-flex items-center justify-center gap-1.5 px-3 py-2.5 sm:py-1.5 text-xs sm:text-sm font-semibold transition-colors cursor-pointer ${
  viewTab === 'curriculum'
- ? 'bg-white/15 text-white border border-white/25'
- : 'text-zinc-400 hover:text-white border border-transparent'
+ ? 'bg-white/15 text-gray-900 border border-white/25'
+ : 'text-gray-600 hover:text-gray-900 border border-transparent'
  }`}
  >
  <Layers className="h-4 w-4 text-emerald-400 shrink-0" />
@@ -547,7 +547,7 @@ export default function DashboardClient() {
  <section key={group.lang} className="space-y-4">
  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5">
  <div className="flex items-center justify-between sm:justify-start gap-2.5 w-full sm:w-auto">
- <h2 className="text-base sm:text-lg font-bold text-white">
+ <h2 className="text-base sm:text-lg font-bold text-gray-900">
  {group.label} · 오늘의 To-Do 리스트
  </h2>
  <span className="rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/40 px-2.5 py-0.5 text-xs font-bold text-[#FDE68A] shrink-0">
@@ -558,7 +558,7 @@ export default function DashboardClient() {
  <button
  type="button"
  onClick={() => handleUnlockNextLesson(group.lang)}
- className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 border border-white/15 bg-[#16161c] px-3.5 py-2.5 sm:py-1.5 text-xs font-semibold text-zinc-200 hover:border-[#D4AF37]/50 hover:text-[#FDE68A] transition-colors cursor-pointer"
+ className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 border border-white/15 bg-white px-3.5 py-2.5 sm:py-1.5 text-xs font-semibold text-zinc-200 hover:border-[#D4AF37]/50 hover:text-[#FDE68A] transition-colors cursor-pointer"
  >
  <PlusCircle className="h-3.5 w-3.5 text-[#D4AF37] shrink-0" />
  <span>다음 신규 과 오늘 진도에 추가 (+1과)</span>
@@ -566,7 +566,7 @@ export default function DashboardClient() {
  </div>
 
  {!isHydrated ? (
- <div className="border border-white/10 bg-[#131318] p-8 text-center text-sm text-zinc-400">
+ <div className="border border-black/10 bg-white p-8 text-center text-sm text-gray-600">
  진도표를 불러오는 중입니다...
  </div>
  ) : group.items.length === 0 ? (
@@ -574,7 +574,7 @@ export default function DashboardClient() {
  <p className="text-base sm:text-lg font-bold text-emerald-300">
  🎉 현재 배정된 모든 과의 본학습 및 복습을 완료했습니다!
  </p>
- <p className="text-sm text-zinc-400">
+ <p className="text-sm text-gray-600">
  우측 상단의 [+ 다음 신규 과 오늘 진도에 추가] 버튼을 눌러 다음 진도를 바로 시작하실 수 있습니다.
  </p>
  </div>
@@ -588,7 +588,7 @@ export default function DashboardClient() {
  return (
  <div
  key={lesson.id}
- className="group relative border border-white/12 bg-[#131318] p-4 sm:p-5 transition-all hover:border-[#D4AF37]/60 hover:bg-[#17171f] shadow-md"
+ className="group relative border border-white/12 bg-white p-4 sm:p-5 transition-all hover:border-[#D4AF37]/60 hover:bg-[#17171f] shadow-md"
  >
  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
  {/* 좌측: 클릭 시 본문으로 이동하는 영역 */}
@@ -597,7 +597,7 @@ export default function DashboardClient() {
  className="flex-1 space-y-2"
  >
  <div className="flex flex-wrap items-center gap-2">
- <span className="bg-white/10 px-2 py-0.5 text-xs font-mono font-bold text-white">
+ <span className="bg-white/10 px-2 py-0.5 text-xs font-mono font-bold text-gray-900">
  {lesson.lang.toUpperCase()} · 제{lesson.lesson_number}과
  </span>
 
@@ -612,12 +612,12 @@ export default function DashboardClient() {
  )}
 
  {lesson.has_content ? (
- <span className="inline-flex items-center gap-1 text-xs text-zinc-400">
+ <span className="inline-flex items-center gap-1 text-xs text-gray-600">
  <Volume2 className="h-3.5 w-3.5 text-[#D4AF37]" />
  {lesson.paragraph_count}개 문단 · {lesson.sentence_count}문장 음성 준비됨
  </span>
  ) : (
- <span className="text-xs text-zinc-500">
+ <span className="text-xs text-gray-500">
  markdown 원고 대기 중 (contents/{lesson.lang}/lesson_
  {String(lesson.lesson_number).padStart(3, '0')}.md)
  </span>
@@ -625,7 +625,7 @@ export default function DashboardClient() {
  </div>
 
  <div className="flex items-center justify-between">
- <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-[#FDE68A] transition-colors">
+ <h3 className="text-base sm:text-lg font-bold text-gray-900 group-hover:text-[#FDE68A] transition-colors">
  {lesson.title}
  </h3>
  </div>
@@ -641,7 +641,7 @@ export default function DashboardClient() {
  className={`inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium border ${
  isDone
  ? 'border-[#D4AF37]/50 bg-[#D4AF37]/20 text-[#FDE68A]'
- : 'border-white/10 bg-black/30 text-zinc-500'
+ : 'border-black/10 bg-black/30 text-gray-500'
  }`}
  >
  <Check
@@ -653,14 +653,14 @@ export default function DashboardClient() {
  </span>
  );
  })}
- <span className="text-xs text-zinc-400 ml-1">
+ <span className="text-xs text-gray-600 ml-1">
  (남은 횟수 {remainCount}회 완료 시 진도표에서 자동 졸업)
  </span>
  </div>
  </Link>
 
  {/* 액션 버튼 바: 모바일 1버튼 1행(w-full), 데스크톱 우측 정렬 */}
- <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto pt-2.5 sm:pt-0 border-t sm:border-t-0 border-white/5 shrink-0">
+ <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto pt-2.5 sm:pt-0 border-t sm:border-t-0 border-black/5 shrink-0">
  <button
  type="button"
  onClick={(e) => handleQuickIncrement(e, lesson)}
@@ -695,12 +695,12 @@ export default function DashboardClient() {
  <section className="space-y-4">
  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
  <div>
- <h2 className="text-base sm:text-lg font-bold text-white">
+ <h2 className="text-base sm:text-lg font-bold text-gray-900">
  {currentCurriculumLang === 'en'
  ? '🇺🇸 영어 전체 120과 커리큘럼 & 복습 기록'
  : '🇯🇵 일본어 전체 120과 커리큘럼 & 복습 기록'}
  </h2>
- <p className="text-xs text-zinc-400 mt-0.5">
+ <p className="text-xs text-gray-600 mt-0.5">
  이미 졸업(복습 완료)하여 To-Do 진도표에서 사라진 과도 이곳에서 언제든 다시 열람하거나 초기화할 수 있습니다.
  </p>
  </div>
@@ -723,7 +723,7 @@ export default function DashboardClient() {
  className={`px-2.5 py-2 sm:py-1 text-xs font-semibold text-center cursor-pointer ${
  curriculumFilter === f.id
  ? 'bg-[#D4AF37] text-black font-bold'
- : 'border border-white/10 bg-[#131318] text-zinc-300 hover:border-white/25'
+ : 'border border-black/10 bg-white text-gray-700 hover:border-white/25'
  }`}
  >
  {f.label}
@@ -746,7 +746,7 @@ export default function DashboardClient() {
  ? 'border-emerald-500/35 bg-emerald-950/10'
  : isReviewing
  ? 'border-[#D4AF37]/45 bg-[#17171f]'
- : 'border-white/10 bg-[#131318] hover:border-white/25'
+ : 'border-black/10 bg-white hover:border-white/25'
  }`}
  >
  <Link
@@ -768,12 +768,12 @@ export default function DashboardClient() {
  </span>
  )}
  {lesson.has_content && (
- <span className="text-[11px] text-zinc-400">
+ <span className="text-[11px] text-gray-600">
  · {lesson.sentence_count}문장
  </span>
  )}
  </div>
- <p className="mt-1 truncate text-sm font-semibold text-white">
+ <p className="mt-1 truncate text-sm font-semibold text-gray-900">
  {lesson.title}
  </p>
  </Link>
@@ -783,7 +783,7 @@ export default function DashboardClient() {
  <button
  type="button"
  onClick={(e) => handleResetLesson(e, lesson)}
- className="border border-white/10 p-1.5 text-zinc-400 hover:border-white/30 hover:text-white cursor-pointer"
+ className="border border-black/10 p-1.5 text-gray-600 hover:border-white/30 hover:text-gray-900 cursor-pointer"
  title="진도 횟수 0으로 초기화 (다시 진도표에 올리기)"
  >
  <RotateCcw className="h-3.5 w-3.5" />

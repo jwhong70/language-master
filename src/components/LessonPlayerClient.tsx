@@ -362,7 +362,7 @@ export default function LessonPlayerClient({
 
  const parts = trimmed.split(/(\*\*.*?\*\*|`.*?`)/g);
  return (
- <p key={i} className="text-sm text-zinc-300 leading-relaxed">
+ <p key={i} className="text-sm text-gray-700 leading-relaxed">
  {parts.map((part, idx) => {
  if (part.startsWith('**') && part.endsWith('**')) {
  return (
@@ -390,7 +390,7 @@ export default function LessonPlayerClient({
 
  if (!lesson) {
  return (
- <div className="min-h-screen bg-[#0a0a0c] text-white flex flex-col items-center justify-center p-6">
+ <div className="min-h-screen bg-[#F9F8F6] text-gray-900 flex flex-col items-center justify-center p-6">
  <p className="text-base sm:text-lg font-bold">해당 과를 찾을 수 없습니다.</p>
  <Link
  href="/"
@@ -405,15 +405,15 @@ export default function LessonPlayerClient({
  const isGraduated = lesson.completed_count >= totalTargetCount;
 
  return (
- <div className="min-h-screen bg-[#0a0a0c] text-[#f4f4f6] pb-36">
+ <div className="min-h-screen bg-[#F9F8F6] text-[#f4f4f6] pb-36">
  {/* 상단 고정 네비게이션: 모바일 2행 분리 */}
- <header className="sticky top-0 z-30 border-b border-white/10 bg-[#0a0a0c]/95 backdrop-blur-md">
+ <header className="sticky top-0 z-30 border-b border-black/10 bg-[#F9F8F6]/95 backdrop-blur-md">
  <div className="mx-auto flex max-w-4xl flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 px-4 py-2.5 sm:px-6">
  <div className="flex items-center justify-between w-full sm:w-auto">
  <Link
  href="/"
  onClick={() => stopAudio()}
- className="inline-flex items-center gap-1.5 border border-white/15 bg-[#14141a] px-3 py-1.5 text-xs sm:text-sm font-semibold text-zinc-200 hover:border-[#D4AF37]/50 hover:text-[#FDE68A] transition-colors"
+ className="inline-flex items-center gap-1.5 border border-white/15 bg-[#FAF9F5] px-3 py-1.5 text-xs sm:text-sm font-semibold text-zinc-200 hover:border-[#D4AF37]/50 hover:text-[#FDE68A] transition-colors"
  >
  <ArrowLeft className="h-3.5 w-3.5" />
  <span>To-Do 진도표</span>
@@ -424,7 +424,7 @@ export default function LessonPlayerClient({
  <Link
  href={`/lesson/${lang}/${lessonNumber - 1}`}
  onClick={() => stopAudio()}
- className="border border-white/10 bg-[#14141a] p-1.5 text-zinc-300 hover:border-white/30 hover:text-white"
+ className="border border-black/10 bg-[#FAF9F5] p-1.5 text-gray-700 hover:border-white/30 hover:text-gray-900"
  title="이전 과"
  >
  <ArrowLeft className="h-4 w-4" />
@@ -434,7 +434,7 @@ export default function LessonPlayerClient({
  <Link
  href={`/lesson/${lang}/${lessonNumber + 1}`}
  onClick={() => stopAudio()}
- className="border border-white/10 bg-[#14141a] p-1.5 text-zinc-300 hover:border-white/30 hover:text-white"
+ className="border border-black/10 bg-[#FAF9F5] p-1.5 text-gray-700 hover:border-white/30 hover:text-gray-900"
  title="다음 과"
  >
  <ArrowRight className="h-4 w-4" />
@@ -454,7 +454,7 @@ export default function LessonPlayerClient({
 
  <main className="mx-auto max-w-4xl px-4 pt-6 sm:px-6 space-y-6">
  {/* 과 타이틀 & 전체 오디오/해설 컨트롤 헤더: 완전 1행 1요소 수직 스택 */}
- <section className="border border-white/12 bg-[#131318] p-5 sm:p-6 shadow-xl space-y-4">
+ <section className="border border-white/12 bg-white p-5 sm:p-6 shadow-xl space-y-4">
  <div className="flex flex-col gap-2.5 w-full">
  {/* 1행: 언어 및 과 번호 배지 */}
  <div>
@@ -465,18 +465,18 @@ export default function LessonPlayerClient({
  </div>
 
  {/* 2행: 문단 및 문장 수 정보 */}
- <div className="text-xs text-zinc-400 font-medium">
+ <div className="text-xs text-gray-600 font-medium">
  {lesson.paragraph_count}개 문단 · 총 {lesson.sentence_count}개 문장 수록
  </div>
 
  {/* 3행: 과 제목 */}
- <h1 className="text-xl sm:text-2xl font-extrabold tracking-tight text-white select-none pt-0.5">
+ <h1 className="text-xl sm:text-2xl font-extrabold tracking-tight text-gray-900 select-none pt-0.5">
  {lesson.title}
  </h1>
 
  {/* 4행 & 5행: 전체 재생 및 해설 펼침 버튼 (각각 1행씩 완전 분리) */}
  {lesson.has_content && (
- <div className="flex flex-col gap-2.5 w-full pt-3 border-t border-white/10">
+ <div className="flex flex-col gap-2.5 w-full pt-3 border-t border-black/10">
  <button
  type="button"
  onClick={handlePlayAllLesson}
@@ -505,17 +505,17 @@ export default function LessonPlayerClient({
  </div>
 
  {/* 사용 안내 팁 바: 모바일 2행 분리 */}
- <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 border border-white/8 bg-[#0c0c10] px-3.5 py-2.5 text-xs text-zinc-400">
+ <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 border border-white/8 bg-[#0c0c10] px-3.5 py-2.5 text-xs text-gray-600">
  <span className="w-full sm:w-auto">
  💡 각 문단의 <strong className="text-[#FDE68A]">[문단 연속 듣기]</strong>, 각 문장의{' '}
  <strong className="text-[#FDE68A]">[1문장 듣기]</strong> ·{' '}
  <strong className="text-emerald-300">[1문장 반복]</strong> ·{' '}
- <strong className="text-white">[해석·해설 펼침]</strong> 버튼을 터치해 학습하세요.
+ <strong className="text-gray-900">[해석·해설 펼침]</strong> 버튼을 터치해 학습하세요.
  </span>
 
  {/* 재생 배속 선택 (모바일 단독 1행) */}
- <div className="flex items-center justify-between sm:justify-end gap-1 w-full sm:w-auto pt-2 sm:pt-0 border-t sm:border-t-0 border-white/5">
- <span className="text-[11px] text-zinc-500 mr-1 shrink-0">배속:</span>
+ <div className="flex items-center justify-between sm:justify-end gap-1 w-full sm:w-auto pt-2 sm:pt-0 border-t sm:border-t-0 border-black/5">
+ <span className="text-[11px] text-gray-500 mr-1 shrink-0">배속:</span>
  <div className="flex items-center gap-1">
  {[0.75, 0.9, 1.0, 1.15, 1.25].map((rate) => (
  <button
@@ -525,7 +525,7 @@ export default function LessonPlayerClient({
  className={`px-2.5 py-1 sm:py-0.5 text-xs font-mono font-semibold cursor-pointer ${
  playbackRate === rate
  ? 'bg-[#D4AF37] text-black font-bold'
- : 'bg-white/5 text-zinc-400 hover:text-white'
+ : 'bg-white/5 text-gray-600 hover:text-gray-900'
  }`}
  >
  {rate}x
@@ -538,11 +538,11 @@ export default function LessonPlayerClient({
 
  {/* 원고가 아직 없는 과일 때 안내 */}
  {!lesson.has_content ? (
- <section className="border border-white/10 bg-[#131318] p-8 text-center space-y-4">
- <p className="text-base sm:text-lg font-bold text-white">
+ <section className="border border-black/10 bg-white p-8 text-center space-y-4">
+ <p className="text-base sm:text-lg font-bold text-gray-900">
  아직 이 과의 마크다운(`.md`) 원고가 작성되지 않았습니다.
  </p>
- <p className="text-sm text-zinc-400 max-w-xl mx-auto leading-relaxed">
+ <p className="text-sm text-gray-600 max-w-xl mx-auto leading-relaxed">
  <code className="bg-white/10 px-2 py-0.5 text-amber-300">
  C:\coding\LANGUAGE\contents\{lang}\lesson_{String(lessonNumber).padStart(3, '0')}.md
  </code>{' '}
@@ -565,18 +565,18 @@ export default function LessonPlayerClient({
  key={para.paragraph_index}
  className={`border transition-all p-4 sm:p-6 space-y-4 ${isParaPlaying
  ? 'border-[#D4AF37]/70 bg-[#16161f] shadow-lg'
- : 'border-white/10 bg-[#121217]'
+ : 'border-black/10 bg-white'
  }`}
  >
  {/* 문단 헤더: 완전 1행 1요소 분리 (줄바꿈 원천 차단) */}
- <div className="flex flex-col gap-2 border-b border-white/10 pb-3.5">
+ <div className="flex flex-col gap-2 border-b border-black/10 pb-3.5">
  <div className="flex items-center gap-2">
  <span className="bg-white/10 px-2.5 py-0.5 text-xs font-mono font-bold text-[#D4AF37]">
  문단 {para.paragraph_index}
  </span>
  </div>
 
- <h2 className="text-base sm:text-lg font-bold text-white leading-snug">
+ <h2 className="text-base sm:text-lg font-bold text-gray-900 leading-snug">
  {para.paragraph_title}
  </h2>
 
@@ -623,7 +623,7 @@ export default function LessonPlayerClient({
  }}
  className={`border transition-all ${isCurrentActive
  ? 'border-[#D4AF37] bg-[#1b1b26] shadow-lg'
- : 'border-white/10 bg-[#0e0e13] hover:border-white/20'
+ : 'border-black/10 bg-[#0e0e13] hover:border-white/20'
  }`}
  >
  {/* 문장 상단 영역 */}
@@ -638,12 +638,12 @@ export default function LessonPlayerClient({
  <span
  className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-mono font-bold ${isCurrentActive
  ? 'bg-[#D4AF37] text-black'
- : 'bg-white/10 text-zinc-400 group-hover:text-white'
+ : 'bg-white/10 text-gray-600 group-hover:text-gray-900'
  }`}
  >
  {sentence.sentence_index}
  </span>
- <span className="text-base sm:text-lg font-bold leading-relaxed text-white group-hover:text-[#FDE68A] transition-colors">
+ <span className="text-base sm:text-lg font-bold leading-relaxed text-gray-900 group-hover:text-[#FDE68A] transition-colors">
  {sentence.text}
  </span>
  </button>
@@ -701,7 +701,7 @@ export default function LessonPlayerClient({
  className={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 sm:py-1.5 text-xs font-semibold transition-colors cursor-pointer ${
  isOpen
  ? 'bg-[#D4AF37]/20 text-[#FDE68A] border border-[#D4AF37]/40'
- : 'bg-white/5 text-zinc-300 hover:bg-white/10 hover:text-white border border-white/10'
+ : 'bg-white/5 text-gray-700 hover:bg-white/10 hover:text-gray-900 border border-black/10'
  }`}
  >
  <span>{isOpen ? '한글 해석·해설 접기' : '한글 해석·해설 펼치기'}</span>
@@ -716,8 +716,8 @@ export default function LessonPlayerClient({
 
  {/* 아코디언 펼침 영역: 한글 해석(KO) + 어휘·문법 해설(NOTE) */}
  {isOpen && (
- <div className="border-t border-white/10 bg-[#14141d] px-4 py-4 sm:px-6 pl-9 sm:pl-12 space-y-3 ">
- <p className="text-sm sm:text-base font-bold text-white leading-relaxed">
+ <div className="border-t border-black/10 bg-[#14141d] px-4 py-4 sm:px-6 pl-9 sm:pl-12 space-y-3 ">
+ <p className="text-sm sm:text-base font-bold text-gray-900 leading-relaxed">
  {sentence.ko}
  </p>
 
@@ -741,12 +741,12 @@ export default function LessonPlayerClient({
  {/* 본문 하단 대형 완료 카드 */}
  <section className="border border-[#D4AF37]/40 bg-[#13131a] p-5 sm:p-6 shadow-xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
  <div className="space-y-1">
- <h3 className="text-base sm:text-lg font-bold text-white">
+ <h3 className="text-base sm:text-lg font-bold text-gray-900">
  {isGraduated
  ? '🎉 이 과의 본학습 및 복습을 모두 완수하셨습니다!'
  : `학습 완료 카운트 (${lesson.completed_count} / ${totalTargetCount}회)`}
  </h3>
- <p className="text-xs sm:text-sm text-zinc-400">
+ <p className="text-xs sm:text-sm text-gray-600">
  {isGraduated
  ? '이미 진도표에서 졸업한 과입니다. 추가 복습을 원하시면 언제든 완료 버튼을 더 누르실 수 있습니다.'
  : `완료 버튼을 누르면 학습 횟수가 +1 카운트되며, 총 ${totalTargetCount}회(본학습 1회 + 복습 ${settings.review_count}회)가 채워지면 진도표에서 사라집니다.`}
@@ -801,7 +801,7 @@ export default function LessonPlayerClient({
  <button
  type="button"
  onClick={stopAudio}
- className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white hover:bg-white/15 cursor-pointer"
+ className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/5 text-gray-900 hover:bg-white/15 cursor-pointer"
  title="정지"
  >
  <Square className="h-3.5 w-3.5 fill-current" />
@@ -815,13 +815,13 @@ export default function LessonPlayerClient({
  `📄 문단 ${activeParagraphIdx} 재생 중`}
  {playbackMode === 'all_lesson' && '🎵 전체 연속 재생 중'}
  </p>
- <p className="text-[11px] text-zinc-400 truncate">
+ <p className="text-[11px] text-gray-600 truncate">
  배속 {playbackRate}x · 문장 클릭 시 즉시 이동
  </p>
  </div>
  </div>
  ) : (
- <div className="flex items-center gap-2 text-xs sm:text-sm text-zinc-400 truncate">
+ <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 truncate">
  <Volume2 className="h-4 w-4 text-[#D4AF37] shrink-0" />
  <span className="truncate">문장/문단의 재생 버튼을 눌러보세요.</span>
  </div>
@@ -836,7 +836,7 @@ export default function LessonPlayerClient({
  setLesson({ ...lesson, completed_count: 0, last_studied_at: null });
  toast.info('이 과의 학습 횟수를 0회로 초기화했습니다.');
  }}
- className="sm:hidden border border-white/10 p-2 text-zinc-400 hover:text-white cursor-pointer shrink-0"
+ className="sm:hidden border border-black/10 p-2 text-gray-600 hover:text-gray-900 cursor-pointer shrink-0"
  title="카운트 0으로 초기화"
  >
  <RotateCcw className="h-3.5 w-3.5" />
@@ -854,7 +854,7 @@ export default function LessonPlayerClient({
  setLesson({ ...lesson, completed_count: 0, last_studied_at: null });
  toast.info('이 과의 학습 횟수를 0회로 초기화했습니다.');
  }}
- className="hidden sm:inline-flex border border-white/10 p-2 text-zinc-400 hover:text-white cursor-pointer"
+ className="hidden sm:inline-flex border border-black/10 p-2 text-gray-600 hover:text-gray-900 cursor-pointer"
  title="카운트 0으로 초기화"
  >
  <RotateCcw className="h-4 w-4" />

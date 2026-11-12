@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0c;
-  --foreground: #f4f4f6;
+  --background: #F9F8F6;
+  --foreground: #1A1A1A;
 }
 
 @theme {
@@ -13,8 +13,8 @@
 
 html,
 body {
-  background-color: #0a0a0c;
-  color: #f4f4f6;
+  background-color: #F9F8F6;
+  color: #1A1A1A;
   font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
@@ -26,13 +26,12 @@ body {
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0f0f12;
+  background: #F0EFEA;
 }
 ::-webkit-scrollbar-thumb {
-  background: #27272a;
+  background: #D5D2C9;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #d4af37;
+  background: #D4AF37;
 }
-
