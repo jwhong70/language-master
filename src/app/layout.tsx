@@ -47,8 +47,8 @@ export default function RootLayout({
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
         />
       </head>
-      <body className="min-h-screen bg-[#F9F8F6] text-[#1A1A1A] antialiased selection:bg-[#D4AF37]/30 selection:text-amber-950">
-        <NextTopLoader color="#D4AF37" showSpinner={false} height={2} />
+      <body className="min-h-screen bg-[#F9F8F6] text-[#1A1A1A] antialiased selection:bg-[#EA580C]/30 selection:text-amber-950">
+        <NextTopLoader color="#EA580C" showSpinner={false} height={2} />
         <Toaster
           position="top-center"
           theme="light"

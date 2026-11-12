@@ -394,7 +394,7 @@ export default function LessonPlayerClient({
  <p className="text-base sm:text-lg font-bold">해당 과를 찾을 수 없습니다.</p>
  <Link
  href="/"
- className="mt-4 bg-[#D4AF37] px-4 py-2 text-sm font-bold text-black"
+ className="mt-4 bg-[#EA580C] px-4 py-2 text-sm font-bold text-black"
  >
  진도표로 돌아가기
  </Link>
@@ -413,7 +413,7 @@ export default function LessonPlayerClient({
  <Link
  href="/"
  onClick={() => stopAudio()}
- className="inline-flex items-center gap-1.5 border border-white/15 bg-[#FAF9F5] px-3 py-1.5 text-xs sm:text-sm font-semibold text-zinc-200 hover:border-[#D4AF37]/50 hover:text-[#FDE68A] transition-colors"
+ className="inline-flex items-center gap-1.5 border border-white/15 bg-[#FAF9F5] px-3 py-1.5 text-xs sm:text-sm font-semibold text-zinc-200 hover:border-[#EA580C]/50 hover:text-[#FDE68A] transition-colors"
  >
  <ArrowLeft className="h-3.5 w-3.5" />
  <span>To-Do 진도표</span>
@@ -444,7 +444,7 @@ export default function LessonPlayerClient({
  </div>
 
  <div className="flex items-center justify-center sm:justify-end w-full sm:w-auto">
- <span className="w-full sm:w-auto text-center rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/15 px-3 py-1 text-xs font-bold text-[#FDE68A]">
+ <span className="w-full sm:w-auto text-center rounded-full border border-[#EA580C]/40 bg-[#EA580C]/15 px-3 py-1 text-xs font-bold text-[#FDE68A]">
  학습 횟수: {lesson.completed_count} / {totalTargetCount}회
  {isGraduated ? ' (졸업 완료)' : ''}
  </span>
@@ -458,7 +458,7 @@ export default function LessonPlayerClient({
  <div className="flex flex-col gap-2.5 w-full">
  {/* 1행: 언어 및 과 번호 배지 */}
  <div>
- <span className="inline-block bg-[#D4AF37] px-2.5 py-1 text-xs font-extrabold text-black tracking-wider">
+ <span className="inline-block bg-[#EA580C] px-2.5 py-1 text-xs font-extrabold text-black tracking-wider">
  {lang === 'en' ? 'ENGLISH' : 'JAPANESE'} · LESSON{' '}
  {String(lessonNumber).padStart(3, '0')}
  </span>
@@ -482,8 +482,8 @@ export default function LessonPlayerClient({
  onClick={handlePlayAllLesson}
  className={`w-full inline-flex items-center justify-center gap-2 px-4 py-3 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
  playbackMode === 'all_lesson'
- ? 'bg-[#D4AF37] text-black shadow-lg'
- : 'border border-[#D4AF37]/50 bg-[#D4AF37]/15 text-[#FDE68A] hover:bg-[#D4AF37] hover:text-black'
+ ? 'bg-[#EA580C] text-black shadow-lg'
+ : 'border border-[#EA580C]/50 bg-[#EA580C]/15 text-[#FDE68A] hover:bg-[#EA580C] hover:text-black'
  }`}
  >
  <ListMusic className="h-4 w-4 shrink-0" />
@@ -497,7 +497,7 @@ export default function LessonPlayerClient({
  onClick={toggleAllAccordions}
  className="w-full inline-flex items-center justify-center gap-2 border border-white/15 bg-[#1a1a22] px-4 py-3 text-xs sm:text-sm font-semibold text-zinc-200 hover:border-white/30 transition-colors cursor-pointer"
  >
- <BookOpen className="h-4 w-4 text-[#D4AF37] shrink-0" />
+ <BookOpen className="h-4 w-4 text-[#EA580C] shrink-0" />
  <span>{allExpanded ? '해석·해설 모두 접기' : '해석·해설 모두 펼치기'}</span>
  </button>
  </div>
@@ -524,7 +524,7 @@ export default function LessonPlayerClient({
  onClick={() => setPlaybackRate(rate)}
  className={`px-2.5 py-1 sm:py-0.5 text-xs font-mono font-semibold cursor-pointer ${
  playbackRate === rate
- ? 'bg-[#D4AF37] text-black font-bold'
+ ? 'bg-[#EA580C] text-black font-bold'
  : 'bg-white/5 text-gray-600 hover:text-gray-900'
  }`}
  >
@@ -564,14 +564,14 @@ export default function LessonPlayerClient({
  <section
  key={para.paragraph_index}
  className={`border transition-all p-4 sm:p-6 space-y-4 ${isParaPlaying
- ? 'border-[#D4AF37]/70 bg-[#16161f] shadow-lg'
+ ? 'border-[#EA580C]/70 bg-[#16161f] shadow-lg'
  : 'border-black/10 bg-white'
  }`}
  >
  {/* 문단 헤더: 완전 1행 1요소 분리 (줄바꿈 원천 차단) */}
  <div className="flex flex-col gap-2 border-b border-black/10 pb-3.5">
  <div className="flex items-center gap-2">
- <span className="bg-white/10 px-2.5 py-0.5 text-xs font-mono font-bold text-[#D4AF37]">
+ <span className="bg-white/10 px-2.5 py-0.5 text-xs font-mono font-bold text-[#EA580C]">
  문단 {para.paragraph_index}
  </span>
  </div>
@@ -587,8 +587,8 @@ export default function LessonPlayerClient({
  }
  className={`w-full inline-flex items-center justify-center gap-2 px-4 py-3 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
  isParaPlaying
- ? 'bg-[#D4AF37] text-black shadow-md'
- : 'border border-[#D4AF37]/40 bg-[#D4AF37]/10 text-[#FDE68A] hover:bg-[#D4AF37] hover:text-black'
+ ? 'bg-[#EA580C] text-black shadow-md'
+ : 'border border-[#EA580C]/40 bg-[#EA580C]/10 text-[#FDE68A] hover:bg-[#EA580C] hover:text-black'
  }`}
  >
  {isParaPlaying ? (
@@ -622,7 +622,7 @@ export default function LessonPlayerClient({
  sentenceCardRefs.current[sentence.id] = el;
  }}
  className={`border transition-all ${isCurrentActive
- ? 'border-[#D4AF37] bg-[#1b1b26] shadow-lg'
+ ? 'border-[#EA580C] bg-[#1b1b26] shadow-lg'
  : 'border-black/10 bg-[#0e0e13] hover:border-white/20'
  }`}
  >
@@ -637,7 +637,7 @@ export default function LessonPlayerClient({
  >
  <span
  className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-mono font-bold ${isCurrentActive
- ? 'bg-[#D4AF37] text-black'
+ ? 'bg-[#EA580C] text-black'
  : 'bg-white/10 text-gray-600 group-hover:text-gray-900'
  }`}
  >
@@ -658,8 +658,8 @@ export default function LessonPlayerClient({
  onClick={() => handlePlaySingleSentence(sentence)}
  className={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 sm:py-1.5 text-xs font-bold transition-all cursor-pointer ${
  isSinglePlaying
- ? 'bg-[#D4AF37] text-black shadow-md'
- : 'border border-white/15 bg-[#171720] text-zinc-200 hover:border-[#D4AF37]/60 hover:text-[#FDE68A]'
+ ? 'bg-[#EA580C] text-black shadow-md'
+ : 'border border-white/15 bg-[#171720] text-zinc-200 hover:border-[#EA580C]/60 hover:text-[#FDE68A]'
  }`}
  >
  {isSinglePlaying ? (
@@ -669,7 +669,7 @@ export default function LessonPlayerClient({
  </>
  ) : (
  <>
- <Play className="h-3.5 w-3.5 fill-current text-[#D4AF37] shrink-0" />
+ <Play className="h-3.5 w-3.5 fill-current text-[#EA580C] shrink-0" />
  <span>1문장 듣기</span>
  </>
  )}
@@ -700,7 +700,7 @@ export default function LessonPlayerClient({
  onClick={() => toggleSentenceAccordion(sentence.id)}
  className={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 sm:py-1.5 text-xs font-semibold transition-colors cursor-pointer ${
  isOpen
- ? 'bg-[#D4AF37]/20 text-[#FDE68A] border border-[#D4AF37]/40'
+ ? 'bg-[#EA580C]/20 text-[#FDE68A] border border-[#EA580C]/40'
  : 'bg-white/5 text-gray-700 hover:bg-white/10 hover:text-gray-900 border border-black/10'
  }`}
  >
@@ -739,7 +739,7 @@ export default function LessonPlayerClient({
  )}
 
  {/* 본문 하단 대형 완료 카드 */}
- <section className="border border-[#D4AF37]/40 bg-[#13131a] p-5 sm:p-6 shadow-xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+ <section className="border border-[#EA580C]/40 bg-[#13131a] p-5 sm:p-6 shadow-xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
  <div className="space-y-1">
  <h3 className="text-base sm:text-lg font-bold text-gray-900">
  {isGraduated
@@ -757,7 +757,7 @@ export default function LessonPlayerClient({
  <button
  type="button"
  onClick={handleCompleteStudy}
- className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#D4AF37] px-5 py-3 text-sm sm:text-base font-extrabold text-black hover:bg-[#e5c247] transition-all shadow-lg cursor-pointer"
+ className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#EA580C] px-5 py-3 text-sm sm:text-base font-extrabold text-black hover:bg-[#e5c247] transition-all shadow-lg cursor-pointer"
  >
  <CheckCircle2 className="h-5 w-5 shrink-0" />
  <span>
@@ -780,7 +780,7 @@ export default function LessonPlayerClient({
  </main>
 
  {/* 하단 고정(Sticky) 오디오 & 완료 플로팅 컨트롤 바 */}
- <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-[#D4AF37]/30 bg-[#0e0e14]/95 backdrop-blur-md">
+ <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-[#EA580C]/30 bg-[#0e0e14]/95 backdrop-blur-md">
  <div className="mx-auto flex max-w-4xl flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 px-4 py-2.5 sm:px-6">
  {/* 현재 오디오 재생 상태 표시 */}
  <div className="flex items-center justify-between sm:justify-start gap-3 min-w-0">
@@ -789,7 +789,7 @@ export default function LessonPlayerClient({
  <button
  type="button"
  onClick={handleTogglePause}
- className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full bg-[#D4AF37] text-black hover:bg-[#e5c247] cursor-pointer"
+ className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full bg-[#EA580C] text-black hover:bg-[#e5c247] cursor-pointer"
  title={isPaused ? '다시 재생' : '일시정지'}
  >
  {isPaused ? (
@@ -822,7 +822,7 @@ export default function LessonPlayerClient({
  </div>
  ) : (
  <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 truncate">
- <Volume2 className="h-4 w-4 text-[#D4AF37] shrink-0" />
+ <Volume2 className="h-4 w-4 text-[#EA580C] shrink-0" />
  <span className="truncate">문장/문단의 재생 버튼을 눌러보세요.</span>
  </div>
  )}
@@ -864,7 +864,7 @@ export default function LessonPlayerClient({
  <button
  type="button"
  onClick={handleCompleteStudy}
- className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 bg-[#D4AF37] px-4 py-2.5 text-xs sm:text-sm font-extrabold text-black hover:bg-[#e5c247] transition-colors cursor-pointer"
+ className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 bg-[#EA580C] px-4 py-2.5 text-xs sm:text-sm font-extrabold text-black hover:bg-[#e5c247] transition-colors cursor-pointer"
  >
  <CheckCircle2 className="h-4 w-4 shrink-0" />
  <span>

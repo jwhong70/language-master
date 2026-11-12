@@ -129,11 +129,11 @@ export default function InstallPrompt() {
  >
  <div
  onClick={handleInstallClick}
- className="relative flex cursor-pointer items-center justify-between gap-3 border border-[#D4AF37]/50 bg-[#121217]/95 p-3.5 shadow-2xl backdrop-blur-xl transition-all active:scale-[0.98] hover:border-[#D4AF37]"
+ className="relative flex cursor-pointer items-center justify-between gap-3 border border-[#EA580C]/50 bg-[#121217]/95 p-3.5 shadow-2xl backdrop-blur-xl transition-all active:scale-[0.98] hover:border-[#EA580C]"
  >
  {/* 좌측 공식 앱 아이콘 & 문구 */}
  <div className="flex items-center gap-3">
- <div className="relative h-12 w-12 shrink-0 overflow-hidden border border-[#D4AF37]/60 shadow-md">
+ <div className="relative h-12 w-12 shrink-0 overflow-hidden border border-[#EA580C]/60 shadow-md">
  <Image
  src="/icon-192x192.png"
  alt="어학 마스터 앱 아이콘"
@@ -146,7 +146,7 @@ export default function InstallPrompt() {
  <div>
  <div className="flex items-center gap-1.5">
  <span className="text-sm font-bold text-white">어학 마스터</span>
- <span className="bg-[#D4AF37]/20 px-1.5 py-0.5 text-[10px] font-semibold text-[#FDE68A]">
+ <span className="bg-[#EA580C]/20 px-1.5 py-0.5 text-[10px] font-semibold text-[#FDE68A]">
  앱으로 추가
  </span>
  </div>
@@ -165,7 +165,7 @@ export default function InstallPrompt() {
  e.stopPropagation();
  handleInstallClick();
  }}
- className="bg-linear-to-r from-[#D4AF37] to-[#F59E0B] px-3.5 py-2 text-xs font-bold text-black shadow-lg transition-transform active:scale-95 hover:brightness-110 cursor-pointer"
+ className="bg-linear-to-r from-[#EA580C] to-[#EA580C] px-3.5 py-2 text-xs font-bold text-black shadow-lg transition-transform active:scale-95 hover:brightness-110 cursor-pointer"
  >
  {isKakao ? "브라우저로 열기" : "1초 설치"}
  </button>
@@ -189,7 +189,7 @@ export default function InstallPrompt() {
  role="dialog"
  aria-modal="true"
  >
- <div className="w-full max-w-sm border border-[#D4AF37]/50 bg-[#16161c] p-6 text-white shadow-2xl animate-in zoom-in-95 duration-200">
+ <div className="w-full max-w-sm border border-[#EA580C]/50 bg-[#16161c] p-6 text-white shadow-2xl animate-in zoom-in-95 duration-200">
  <div className="mb-4 flex items-center justify-between">
  <h3 className="text-lg font-bold text-[#FDE68A]">
  {isKakao ? "💬 외부 브라우저 열기" : "📲 스마트폰 홈 화면에 추가하기"}
@@ -210,7 +210,7 @@ export default function InstallPrompt() {
  </p>
  <div className="space-y-3 bg-[#0e0e12] p-4 border border-white/10 text-sm">
  <div className="flex items-center gap-3">
- <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#D4AF37] font-bold text-black">
+ <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#EA580C] font-bold text-black">
  1
  </span>
  <span className="leading-snug">
@@ -218,7 +218,7 @@ export default function InstallPrompt() {
  </span>
  </div>
  <div className="flex items-center gap-3">
- <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#D4AF37] font-bold text-black">
+ <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#EA580C] font-bold text-black">
  2
  </span>
  <span className="leading-snug">
@@ -226,7 +226,7 @@ export default function InstallPrompt() {
  </span>
  </div>
  <div className="flex items-center gap-3">
- <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#D4AF37] font-bold text-black">
+ <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#EA580C] font-bold text-black">
  3
  </span>
  <span className="leading-snug">
@@ -242,7 +242,7 @@ export default function InstallPrompt() {
  </p>
  <div className="space-y-3 bg-[#0e0e12] p-4 border border-white/10 text-sm">
  <div className="flex items-center gap-3">
- <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#D4AF37] font-bold text-black">
+ <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#EA580C] font-bold text-black">
  1
  </span>
  <span className="leading-snug">
@@ -250,7 +250,7 @@ export default function InstallPrompt() {
  </span>
  </div>
  <div className="flex items-center gap-3">
- <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#D4AF37] font-bold text-black">
+ <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#EA580C] font-bold text-black">
  2
  </span>
  <span className="leading-snug">
@@ -258,7 +258,7 @@ export default function InstallPrompt() {
  </span>
  </div>
  <div className="flex items-center gap-3">
- <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#D4AF37] font-bold text-black">
+ <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#EA580C] font-bold text-black">
  3
  </span>
  <span className="leading-snug">
@@ -274,7 +274,7 @@ export default function InstallPrompt() {
  </p>
  <div className="space-y-3 bg-[#0e0e12] p-4 border border-white/10 text-sm">
  <div className="flex items-center gap-3">
- <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#D4AF37] font-bold text-black">
+ <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#EA580C] font-bold text-black">
  1
  </span>
  <span className="leading-snug">
@@ -282,7 +282,7 @@ export default function InstallPrompt() {
  </span>
  </div>
  <div className="flex items-center gap-3">
- <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#D4AF37] font-bold text-black">
+ <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#EA580C] font-bold text-black">
  2
  </span>
  <span className="leading-snug">
@@ -295,7 +295,7 @@ export default function InstallPrompt() {
 
  <button
  onClick={() => setShowIOSModal(false)}
- className="mt-6 w-full bg-[#D4AF37] py-3 text-sm font-bold text-black shadow-md hover:bg-[#e5c247] active:scale-95 transition-all cursor-pointer"
+ className="mt-6 w-full bg-[#EA580C] py-3 text-sm font-bold text-black shadow-md hover:bg-[#e5c247] active:scale-95 transition-all cursor-pointer"
  >
  확인했습니다
  </button>

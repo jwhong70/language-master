@@ -200,7 +200,7 @@ export default function DashboardClient() {
  <div className="mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-4 py-3 sm:px-6">
  {/* 1행: 로고 및 타이틀 (모바일 100% 전폭 단독 점유) */}
  <div className="flex items-center gap-3 w-full sm:w-auto">
- <div className="flex h-9 w-9 items-center justify-center border border-[#D4AF37]/40 bg-[#D4AF37]/10 text-[#D4AF37] shrink-0">
+ <div className="flex h-9 w-9 items-center justify-center border border-[#EA580C]/40 bg-[#EA580C]/10 text-[#EA580C] shrink-0">
  <BookOpen className="h-5 w-5" />
  </div>
  <div className="min-w-0">
@@ -248,9 +248,9 @@ export default function DashboardClient() {
  setDraftReviewCount(settings.review_count);
  setShowSettingsModal((prev) => !prev);
  }}
- className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 border border-black/15 bg-[#1F1F1F] px-3.5 py-2.5 sm:py-2 text-xs sm:text-sm font-semibold text-gray-900 hover:bg-[#2B2B2B] hover:border-[#D4AF37] transition-colors cursor-pointer shadow-xs"
+ className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 border border-black/15 bg-[#1F1F1F] px-3.5 py-2.5 sm:py-2 text-xs sm:text-sm font-semibold text-gray-900 hover:bg-[#2B2B2B] hover:border-[#EA580C] transition-colors cursor-pointer shadow-xs"
  >
- <Settings className="h-4 w-4 text-[#D4AF37]" />
+ <Settings className="h-4 w-4 text-[#EA580C]" />
  <span>진도 설정</span>
  </button>
  </div>
@@ -260,10 +260,10 @@ export default function DashboardClient() {
  <main className="mx-auto max-w-5xl px-4 pt-6 sm:px-6 space-y-6">
  {/* 진도 설정 모달/패널 */}
  {showSettingsModal && (
- <section className="border border-black/15 border-l-4 border-l-[#D4AF37] bg-white p-5 sm:p-6 shadow-md">
+ <section className="border border-black/15 border-l-4 border-l-[#EA580C] bg-white p-5 sm:p-6 shadow-md">
  <div className="flex items-center justify-between border-b border-black/10 pb-3 mb-4">
  <div className="flex items-center gap-2">
- <Settings className="h-5 w-5 text-[#D4AF37]" />
+ <Settings className="h-5 w-5 text-[#EA580C]" />
  <h2 className="text-base sm:text-lg font-bold text-gray-900">
  일일 학습 분량 및 복습 횟수 설정
  </h2>
@@ -289,13 +289,13 @@ export default function DashboardClient() {
  onClick={() => handleLanguageSwitch('en')}
  className={`p-3 text-left transition-all border cursor-pointer ${
  settings.active_lang === 'en'
- ? 'border-[#D4AF37] bg-[#D4AF37]/15 text-gray-900'
+ ? 'border-[#EA580C] bg-[#EA580C]/15 text-gray-900'
  : 'border-black/10 bg-white text-gray-600 hover:border-white/20'
  }`}
  >
  <div className="flex items-center justify-between mb-1">
  <span className="text-sm font-bold text-gray-900">🇺🇸 영어만 진행</span>
- {settings.active_lang === 'en' && <Check className="h-4 w-4 text-[#D4AF37]" />}
+ {settings.active_lang === 'en' && <Check className="h-4 w-4 text-[#EA580C]" />}
  </div>
  <p className="text-xs text-gray-600">영어 120과 진도 집중</p>
  </button>
@@ -305,13 +305,13 @@ export default function DashboardClient() {
  onClick={() => handleLanguageSwitch('ja')}
  className={`p-3 text-left transition-all border cursor-pointer ${
  settings.active_lang === 'ja'
- ? 'border-[#D4AF37] bg-[#D4AF37]/15 text-gray-900'
+ ? 'border-[#EA580C] bg-[#EA580C]/15 text-gray-900'
  : 'border-black/10 bg-white text-gray-600 hover:border-white/20'
  }`}
  >
  <div className="flex items-center justify-between mb-1">
  <span className="text-sm font-bold text-gray-900">🇯🇵 일본어만 진행</span>
- {settings.active_lang === 'ja' && <Check className="h-4 w-4 text-[#D4AF37]" />}
+ {settings.active_lang === 'ja' && <Check className="h-4 w-4 text-[#EA580C]" />}
  </div>
  <p className="text-xs text-gray-600">일본어 90과 진도 집중</p>
  </button>
@@ -321,13 +321,13 @@ export default function DashboardClient() {
  onClick={() => handleLanguageSwitch('all')}
  className={`p-3 text-left transition-all border cursor-pointer ${
  settings.active_lang === 'all'
- ? 'border-[#D4AF37] bg-[#D4AF37]/15 text-gray-900'
+ ? 'border-[#EA580C] bg-[#EA580C]/15 text-gray-900'
  : 'border-black/10 bg-white text-gray-600 hover:border-white/20'
  }`}
  >
  <div className="flex items-center justify-between mb-1">
  <span className="text-sm font-bold text-gray-900">🌏 둘 다 진행</span>
- {settings.active_lang === 'all' && <Check className="h-4 w-4 text-[#D4AF37]" />}
+ {settings.active_lang === 'all' && <Check className="h-4 w-4 text-[#EA580C]" />}
  </div>
  <p className="text-xs text-gray-600">영어 + 일본어 동시 To-Do</p>
  </button>
@@ -346,7 +346,7 @@ export default function DashboardClient() {
  max={20}
  value={draftDailyEn}
  onChange={(e) => setDraftDailyEn(Number(e.target.value))}
- className="w-full border border-white/15 bg-[#18181f] px-3 py-2 text-base font-bold text-gray-900 focus:ring-1 focus:ring-[#D4AF37] focus:outline-none"
+ className="w-full border border-white/15 bg-[#18181f] px-3 py-2 text-base font-bold text-gray-900 focus:ring-1 focus:ring-[#EA580C] focus:outline-none"
  />
  <span className="text-sm font-medium text-gray-700 shrink-0">과 / 일</span>
  </div>
@@ -364,7 +364,7 @@ export default function DashboardClient() {
  max={20}
  value={draftDailyJa}
  onChange={(e) => setDraftDailyJa(Number(e.target.value))}
- className="w-full border border-white/15 bg-[#18181f] px-3 py-2 text-base font-bold text-gray-900 focus:ring-1 focus:ring-[#D4AF37] focus:outline-none"
+ className="w-full border border-white/15 bg-[#18181f] px-3 py-2 text-base font-bold text-gray-900 focus:ring-1 focus:ring-[#EA580C] focus:outline-none"
  />
  <span className="text-sm font-medium text-gray-700 shrink-0">과 / 일</span>
  </div>
@@ -382,11 +382,11 @@ export default function DashboardClient() {
  max={10}
  value={draftReviewCount}
  onChange={(e) => setDraftReviewCount(Number(e.target.value))}
- className="w-full border border-white/15 bg-[#18181f] px-3 py-2 text-base font-bold text-gray-900 focus:ring-1 focus:ring-[#D4AF37] focus:outline-none"
+ className="w-full border border-white/15 bg-[#18181f] px-3 py-2 text-base font-bold text-gray-900 focus:ring-1 focus:ring-[#EA580C] focus:outline-none"
  />
  <span className="text-sm font-medium text-gray-700 shrink-0">회 복습</span>
  </div>
- <p className="mt-1.5 text-xs text-[#D4AF37]">
+ <p className="mt-1.5 text-xs text-[#EA580C]">
  본학습 1회 + 복습 {draftReviewCount}회 = 총 {1 + Number(draftReviewCount)}회 완료 시 졸업
  </p>
  </div>
@@ -410,7 +410,7 @@ export default function DashboardClient() {
  </button>
  <button
  type="submit"
- className="bg-[#D4AF37] px-4 py-2 text-xs sm:text-sm font-bold text-black hover:bg-[#e5c247] transition-colors cursor-pointer"
+ className="bg-[#EA580C] px-4 py-2 text-xs sm:text-sm font-bold text-black hover:bg-[#e5c247] transition-colors cursor-pointer"
  >
  설정 저장하기
  </button>
@@ -425,7 +425,7 @@ export default function DashboardClient() {
  <div className="border border-black/10 bg-white p-4 sm:p-5">
  <div className="flex items-center justify-between">
  <span className="text-xs font-semibold text-gray-600">현재 학습 규칙</span>
- <Sparkles className="h-4 w-4 text-[#D4AF37]" />
+ <Sparkles className="h-4 w-4 text-[#EA580C]" />
  </div>
  <p className="mt-2 text-base sm:text-lg font-bold text-gray-900">
  영어 {settings.daily_en_count}과 · 일어 {settings.daily_ja_count}과 / 일
@@ -438,13 +438,13 @@ export default function DashboardClient() {
  <div className="border border-black/10 bg-white p-4 sm:p-5">
  <div className="flex items-center justify-between">
  <span className="text-xs font-semibold text-gray-600">🇺🇸 영어 120과 진행률</span>
- <span className="text-xs font-mono font-bold text-[#D4AF37]">
+ <span className="text-xs font-mono font-bold text-[#EA580C]">
  {enStats.graduatedCount} / 120과 졸업
  </span>
  </div>
  <div className="mt-2.5 h-2 w-full overflow-hidden rounded-full bg-white/10">
  <div
- className="h-full rounded-full bg-[#D4AF37] transition-all duration-500"
+ className="h-full rounded-full bg-[#EA580C] transition-all duration-500"
  style={{ width: `${Math.min(100, (enStats.graduatedCount / 120) * 100)}%` }}
  />
  </div>
@@ -482,7 +482,7 @@ export default function DashboardClient() {
  onClick={() => handleLanguageSwitch('en')}
  className={`w-full sm:w-auto text-center px-4 py-2.5 sm:py-2 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
  settings.active_lang === 'en'
- ? 'bg-[#D4AF37] text-black shadow-lg'
+ ? 'bg-[#EA580C] text-black shadow-lg'
  : 'border border-black/10 bg-white text-gray-700 hover:border-white/25'
  }`}
  >
@@ -493,7 +493,7 @@ export default function DashboardClient() {
  onClick={() => handleLanguageSwitch('ja')}
  className={`w-full sm:w-auto text-center px-4 py-2.5 sm:py-2 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
  settings.active_lang === 'ja'
- ? 'bg-[#D4AF37] text-black shadow-lg'
+ ? 'bg-[#EA580C] text-black shadow-lg'
  : 'border border-black/10 bg-white text-gray-700 hover:border-white/25'
  }`}
  >
@@ -504,7 +504,7 @@ export default function DashboardClient() {
  onClick={() => handleLanguageSwitch('all')}
  className={`w-full sm:w-auto text-center px-4 py-2.5 sm:py-2 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
  settings.active_lang === 'all'
- ? 'bg-[#D4AF37] text-black shadow-lg'
+ ? 'bg-[#EA580C] text-black shadow-lg'
  : 'border border-black/10 bg-white text-gray-700 hover:border-white/25'
  }`}
  >
@@ -522,7 +522,7 @@ export default function DashboardClient() {
  : 'text-gray-600 hover:text-gray-900 border border-transparent'
  }`}
  >
- <CheckCircle2 className="h-4 w-4 text-[#D4AF37] shrink-0" />
+ <CheckCircle2 className="h-4 w-4 text-[#EA580C] shrink-0" />
  <span>오늘의 To-Do</span>
  </button>
  <button
@@ -550,7 +550,7 @@ export default function DashboardClient() {
  <h2 className="text-base sm:text-lg font-bold text-gray-900">
  {group.label} · 오늘의 To-Do 리스트
  </h2>
- <span className="rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/40 px-2.5 py-0.5 text-xs font-bold text-[#FDE68A] shrink-0">
+ <span className="rounded-full bg-[#EA580C]/15 border border-[#EA580C]/40 px-2.5 py-0.5 text-xs font-bold text-[#FDE68A] shrink-0">
  {group.items.length}개
  </span>
  </div>
@@ -558,9 +558,9 @@ export default function DashboardClient() {
  <button
  type="button"
  onClick={() => handleUnlockNextLesson(group.lang)}
- className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 border border-white/15 bg-white px-3.5 py-2.5 sm:py-1.5 text-xs font-semibold text-zinc-200 hover:border-[#D4AF37]/50 hover:text-[#FDE68A] transition-colors cursor-pointer"
+ className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 border border-white/15 bg-white px-3.5 py-2.5 sm:py-1.5 text-xs font-semibold text-zinc-200 hover:border-[#EA580C]/50 hover:text-[#FDE68A] transition-colors cursor-pointer"
  >
- <PlusCircle className="h-3.5 w-3.5 text-[#D4AF37] shrink-0" />
+ <PlusCircle className="h-3.5 w-3.5 text-[#EA580C] shrink-0" />
  <span>다음 신규 과 오늘 진도에 추가 (+1과)</span>
  </button>
  </div>
@@ -588,7 +588,7 @@ export default function DashboardClient() {
  return (
  <div
  key={lesson.id}
- className="group relative border border-white/12 bg-white p-4 sm:p-5 transition-all hover:border-[#D4AF37]/60 hover:bg-[#17171f] shadow-md"
+ className="group relative border border-white/12 bg-white p-4 sm:p-5 transition-all hover:border-[#EA580C]/60 hover:bg-[#17171f] shadow-md"
  >
  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
  {/* 좌측: 클릭 시 본문으로 이동하는 영역 */}
@@ -602,7 +602,7 @@ export default function DashboardClient() {
  </span>
 
  {isNew ? (
- <span className="rounded-full border border-[#D4AF37]/50 bg-[#D4AF37]/15 px-2.5 py-0.5 text-xs font-bold text-[#FDE68A]">
+ <span className="rounded-full border border-[#EA580C]/50 bg-[#EA580C]/15 px-2.5 py-0.5 text-xs font-bold text-[#FDE68A]">
  신규 본학습 (0/{totalTargetCount}회)
  </span>
  ) : (
@@ -613,7 +613,7 @@ export default function DashboardClient() {
 
  {lesson.has_content ? (
  <span className="inline-flex items-center gap-1 text-xs text-gray-600">
- <Volume2 className="h-3.5 w-3.5 text-[#D4AF37]" />
+ <Volume2 className="h-3.5 w-3.5 text-[#EA580C]" />
  {lesson.paragraph_count}개 문단 · {lesson.sentence_count}문장 음성 준비됨
  </span>
  ) : (
@@ -640,13 +640,13 @@ export default function DashboardClient() {
  key={idx}
  className={`inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium border ${
  isDone
- ? 'border-[#D4AF37]/50 bg-[#D4AF37]/20 text-[#FDE68A]'
+ ? 'border-[#EA580C]/50 bg-[#EA580C]/20 text-[#FDE68A]'
  : 'border-black/10 bg-black/30 text-gray-500'
  }`}
  >
  <Check
  className={`h-3 w-3 ${
- isDone ? 'text-[#D4AF37]' : 'opacity-30'
+ isDone ? 'text-[#EA580C]' : 'opacity-30'
  }`}
  />
  {stepLabel}
@@ -664,7 +664,7 @@ export default function DashboardClient() {
  <button
  type="button"
  onClick={(e) => handleQuickIncrement(e, lesson)}
- className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 border border-[#D4AF37]/40 bg-[#D4AF37]/10 px-4 py-2.5 sm:py-2 text-xs font-bold text-[#FDE68A] hover:bg-[#D4AF37] hover:text-black transition-all cursor-pointer"
+ className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 border border-[#EA580C]/40 bg-[#EA580C]/10 px-4 py-2.5 sm:py-2 text-xs font-bold text-[#FDE68A] hover:bg-[#EA580C] hover:text-black transition-all cursor-pointer"
  title="진도 카운트 +1 증가"
  >
  <CheckCircle2 className="h-4 w-4 shrink-0" />
@@ -673,7 +673,7 @@ export default function DashboardClient() {
 
  <Link
  href={`/lesson/${lesson.lang}/${lesson.lesson_number}`}
- className="w-full sm:w-auto inline-flex items-center justify-center gap-1 bg-[#D4AF37] px-4 py-2.5 sm:py-2 text-xs sm:text-sm font-bold text-black hover:bg-[#e5c247] transition-colors"
+ className="w-full sm:w-auto inline-flex items-center justify-center gap-1 bg-[#EA580C] px-4 py-2.5 sm:py-2 text-xs sm:text-sm font-bold text-black hover:bg-[#e5c247] transition-colors"
  >
  <span>본문 학습</span>
  <ChevronRight className="h-4 w-4 shrink-0" />
@@ -722,7 +722,7 @@ export default function DashboardClient() {
  }
  className={`px-2.5 py-2 sm:py-1 text-xs font-semibold text-center cursor-pointer ${
  curriculumFilter === f.id
- ? 'bg-[#D4AF37] text-black font-bold'
+ ? 'bg-[#EA580C] text-black font-bold'
  : 'border border-black/10 bg-white text-gray-700 hover:border-white/25'
  }`}
  >
@@ -745,7 +745,7 @@ export default function DashboardClient() {
  isGraduated
  ? 'border-emerald-500/35 bg-emerald-950/10'
  : isReviewing
- ? 'border-[#D4AF37]/45 bg-[#17171f]'
+ ? 'border-[#EA580C]/45 bg-[#17171f]'
  : 'border-black/10 bg-white hover:border-white/25'
  }`}
  >
@@ -754,7 +754,7 @@ export default function DashboardClient() {
  className="flex-1 min-w-0 pr-3"
  >
  <div className="flex items-center gap-2">
- <span className="text-xs font-mono font-bold text-[#D4AF37]">
+ <span className="text-xs font-mono font-bold text-[#EA580C]">
  제{String(lesson.lesson_number).padStart(3, '0')}과
  </span>
  {isGraduated && (
@@ -791,7 +791,7 @@ export default function DashboardClient() {
  )}
  <Link
  href={`/lesson/${lesson.lang}/${lesson.lesson_number}`}
- className="border border-white/15 bg-white/5 px-2.5 py-1.5 text-xs font-semibold text-zinc-200 hover:bg-[#D4AF37] hover:text-black hover:border-[#D4AF37] transition-colors"
+ className="border border-white/15 bg-white/5 px-2.5 py-1.5 text-xs font-semibold text-zinc-200 hover:bg-[#EA580C] hover:text-black hover:border-[#EA580C] transition-colors"
  >
  열기
  </Link>
