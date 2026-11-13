@@ -68,18 +68,33 @@ h1, h2, h3, h4, h5, h6 {
     @apply border border-black/10 bg-[#FAF9F5];
   }
   .ui-btn-primary {
-    @apply inline-flex items-center justify-center gap-1.5 bg-brand px-4 py-2.5 text-xs sm:text-sm font-bold text-white transition-colors hover:bg-brand-hover cursor-pointer;
+    @apply inline-flex items-center justify-center gap-1.5 bg-brand px-4 py-2.5 text-xs sm:text-sm font-bold text-white transition-colors cursor-pointer;
+    &:hover {
+      background-color: var(--color-brand-hover);
+    }
   }
   .ui-btn-dark {
-    @apply inline-flex items-center justify-center gap-1.5 border border-black/15 bg-[#1F1F1F] px-4 py-2.5 text-xs sm:text-sm font-semibold text-white transition-colors hover:bg-[#2B2B2B] hover:border-brand cursor-pointer shadow-xs;
+    @apply inline-flex items-center justify-center gap-1.5 border border-black/15 bg-[#1F1F1F] px-4 py-2.5 text-xs sm:text-sm font-semibold text-white transition-colors cursor-pointer shadow-xs;
+    &:hover {
+      background-color: #2B2B2B;
+      border-color: var(--color-brand);
+    }
   }
   .ui-btn-outline {
-    @apply inline-flex items-center justify-center gap-1.5 border border-black/15 bg-white px-4 py-2.5 text-xs sm:text-sm font-semibold text-gray-800 transition-colors hover:border-brand/50 hover:text-brand-dark cursor-pointer;
+    @apply inline-flex items-center justify-center gap-1.5 border border-black/15 bg-white px-4 py-2.5 text-xs sm:text-sm font-semibold text-gray-800 transition-colors cursor-pointer;
+    &:hover {
+      border-color: color-mix(in oklab, var(--color-brand) 50%, transparent);
+      color: var(--color-brand-dark);
+    }
   }
   .ui-badge-brand {
     @apply inline-flex items-center gap-1.5 rounded-full border border-brand/30 bg-brand/10 px-2.5 py-0.5 text-xs font-bold text-brand-dark whitespace-nowrap;
   }
   .ui-input {
-    @apply w-full border border-black/15 bg-white px-3.5 py-2.5 text-sm text-gray-900 focus:border-brand focus:outline-none;
+    @apply w-full border border-black/15 bg-white px-3.5 py-2.5 text-sm text-gray-900;
+    &:focus {
+      border-color: var(--color-brand);
+      outline: none;
+    }
   }
 }
