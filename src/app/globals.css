@@ -18,6 +18,8 @@
   --color-brand-surface: #FFF7ED;
   --color-canvas: #F9F8F6;
   --color-body-dark: #1F1F1F;
+  --color-dark-surface: #2D2B28;
+  --color-dark-surface-hover: #3F3C37;
 }
 
 html,
@@ -74,9 +76,9 @@ h1, h2, h3, h4, h5, h6 {
     }
   }
   .ui-btn-dark {
-    @apply inline-flex items-center justify-center gap-1.5 border border-black/15 bg-[#1F1F1F] px-4 py-2.5 text-xs sm:text-sm font-semibold text-white transition-colors cursor-pointer shadow-xs;
+    @apply inline-flex items-center justify-center gap-1.5 border border-black/15 bg-dark-surface px-4 py-2.5 text-xs sm:text-sm font-semibold text-white transition-colors cursor-pointer shadow-xs;
     &:hover {
-      background-color: #2B2B2B;
+      background-color: var(--color-dark-surface-hover);
       border-color: var(--color-brand);
     }
   }

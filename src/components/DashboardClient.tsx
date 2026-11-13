@@ -248,7 +248,7 @@ export default function DashboardClient() {
                 setDraftReviewCount(settings.review_count);
                 setShowSettingsModal((prev) => !prev);
               }}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 border border-black/15 bg-[#1F1F1F] px-3.5 py-2.5 sm:py-2 text-xs sm:text-sm font-semibold text-white hover:bg-[#2B2B2B] hover:border-brand transition-colors cursor-pointer shadow-xs"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 border border-black/15 bg-dark-surface px-3.5 py-2.5 sm:py-2 text-xs sm:text-sm font-semibold text-white hover:bg-dark-surface-hover hover:border-brand transition-colors cursor-pointer shadow-xs"
             >
               <Settings className="h-4 w-4 text-brand" />
               <span>진도 설정</span>
