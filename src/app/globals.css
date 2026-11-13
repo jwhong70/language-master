@@ -58,3 +58,28 @@ h1, h2, h3, h4, h5, h6 {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-brand);
 }
+
+/* 공통 UI 컴포넌트 클래스 (Tailwind CSS v4 @layer components) */
+@layer components {
+  .ui-card {
+    @apply border border-black/10 bg-white shadow-xs;
+  }
+  .ui-card-soft {
+    @apply border border-black/10 bg-[#FAF9F5];
+  }
+  .ui-btn-primary {
+    @apply inline-flex items-center justify-center gap-1.5 bg-brand px-4 py-2.5 text-xs sm:text-sm font-bold text-white transition-colors hover:bg-brand-hover cursor-pointer;
+  }
+  .ui-btn-dark {
+    @apply inline-flex items-center justify-center gap-1.5 border border-black/15 bg-[#1F1F1F] px-4 py-2.5 text-xs sm:text-sm font-semibold text-white transition-colors hover:bg-[#2B2B2B] hover:border-brand cursor-pointer shadow-xs;
+  }
+  .ui-btn-outline {
+    @apply inline-flex items-center justify-center gap-1.5 border border-black/15 bg-white px-4 py-2.5 text-xs sm:text-sm font-semibold text-gray-800 transition-colors hover:border-brand/50 hover:text-brand-dark cursor-pointer;
+  }
+  .ui-badge-brand {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-brand/30 bg-brand/10 px-2.5 py-0.5 text-xs font-bold text-brand-dark whitespace-nowrap;
+  }
+  .ui-input {
+    @apply w-full border border-black/15 bg-white px-3.5 py-2.5 text-sm text-gray-900 focus:border-brand focus:outline-none;
+  }
+}
