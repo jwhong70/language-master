@@ -2,22 +2,45 @@
 
 :root {
   --background: #F9F8F6;
-  --foreground: #1A1A1A;
+  --foreground: #1F1F1F;
 }
 
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+
+  /* 공식 브랜드 컬러 시스템 (Rule 13: 에르메스 앰버 오렌지 & 웜 화이트 체계) */
+  --color-brand: #EA580C;
+  --color-brand-hover: #C2410C;
+  --color-brand-dark: #9A3412;
+  --color-brand-light: #FED7AA;
+  --color-brand-surface: #FFF7ED;
+  --color-canvas: #F9F8F6;
+  --color-body-dark: #1F1F1F;
 }
 
 html,
 body {
-  background-color: #F9F8F6;
-  color: #1A1A1A;
+  background-color: var(--background);
+  color: var(--foreground);
   font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
+}
+
+/* 전역 제목(h1~h6) 브랜드 컬러 일괄 상속 */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  color: var(--color-brand);
+}
+
+/* 다크 배경 컨테이너 내부의 제목 가독성 보정 가드 */
+.bg-black h1, .bg-black h2, .bg-black h3, .bg-black h4,
+.bg-\[\#1F1F1F\] h1, .bg-\[\#1F1F1F\] h2, .bg-\[\#1F1F1F\] h3, .bg-\[\#1F1F1F\] h4,
+.bg-neutral-900 h1, .bg-neutral-900 h2, .bg-neutral-900 h3, .bg-neutral-900 h4,
+[class*="bg-black"] h1, [class*="bg-black"] h2, [class*="bg-black"] h3, [class*="bg-black"] h4 {
+  color: #FFFFFF;
 }
 
 /* 커스텀 스크롤바 */
@@ -33,5 +56,5 @@ body {
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #EA580C;
+  background: var(--color-brand);
 }

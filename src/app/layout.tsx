@@ -47,7 +47,7 @@ export default function RootLayout({
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
         />
       </head>
-      <body className="min-h-screen bg-[#F9F8F6] text-[#1A1A1A] antialiased selection:bg-[#EA580C]/30 selection:text-amber-950">
+      <body className="min-h-screen bg-canvas text-body-dark antialiased selection:bg-brand/20 selection:text-brand-dark">
         <NextTopLoader color="#EA580C" showSpinner={false} height={2} />
         <Toaster
           position="top-center"
@@ -55,8 +55,8 @@ export default function RootLayout({
           toastOptions={{
             style: {
               background: '#FFFFFF',
-              border: '1px solid rgba(212, 175, 55, 0.35)',
-              color: '#1A1A1A',
+              border: '1px solid rgba(234, 88, 12, 0.35)',
+              color: '#1F1F1F',
             },
           }}
         />

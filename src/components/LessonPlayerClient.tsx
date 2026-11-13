@@ -364,195 +364,195 @@ export default function LessonPlayerClient({
  return (
  <p key={i} className="text-sm text-gray-700 leading-relaxed">
  {parts.map((part, idx) => {
- if (part.startsWith('**') && part.endsWith('**')) {
- return (
- <strong key={idx} className="font-bold text-[#FDE68A]">
- {part.slice(2, -2)}
- </strong>
- );
- }
- if (part.startsWith('`') && part.endsWith('`')) {
- return (
- <code
- key={idx}
- className="bg-white/10 px-1.5 py-0.5 font-mono text-xs text-amber-200"
- >
- {part.slice(1, -1)}
- </code>
- );
- }
- return <React.Fragment key={idx}>{part}</React.Fragment>;
- })}
- </p>
- );
- });
- };
+            if (part.startsWith('**') && part.endsWith('**')) {
+              return (
+                <strong key={idx} className="font-bold text-brand-dark">
+                  {part.slice(2, -2)}
+                </strong>
+              );
+            }
+            if (part.startsWith('`') && part.endsWith('`')) {
+              return (
+                <code
+                  key={idx}
+                  className="bg-brand-surface border border-brand/20 px-1.5 py-0.5 font-mono text-xs text-brand-dark"
+                >
+                  {part.slice(1, -1)}
+                </code>
+              );
+            }
+            return <React.Fragment key={idx}>{part}</React.Fragment>;
+          })}
+        </p>
+      );
+    });
+  };
 
- if (!lesson) {
- return (
- <div className="min-h-screen bg-[#F9F8F6] text-gray-900 flex flex-col items-center justify-center p-6">
- <p className="text-base sm:text-lg font-bold">해당 과를 찾을 수 없습니다.</p>
- <Link
- href="/"
- className="mt-4 bg-[#EA580C] px-4 py-2 text-sm font-bold text-black"
- >
- 진도표로 돌아가기
- </Link>
- </div>
- );
- }
+  if (!lesson) {
+    return (
+      <div className="min-h-screen bg-canvas text-body-dark flex flex-col items-center justify-center p-6">
+        <p className="text-base sm:text-lg font-bold">해당 과를 찾을 수 없습니다.</p>
+        <Link
+          href="/"
+          className="mt-4 bg-brand px-4 py-2 text-sm font-bold text-white hover:bg-brand-hover"
+        >
+          진도표로 돌아가기
+        </Link>
+      </div>
+    );
+  }
 
- const isGraduated = lesson.completed_count >= totalTargetCount;
+  const isGraduated = lesson.completed_count >= totalTargetCount;
 
- return (
- <div className="min-h-screen bg-[#F9F8F6] text-[#f4f4f6] pb-36">
- {/* 상단 고정 네비게이션: 모바일 2행 분리 */}
- <header className="sticky top-0 z-30 border-b border-black/10 bg-[#F9F8F6]/95 backdrop-blur-md">
- <div className="mx-auto flex max-w-4xl flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 px-4 py-2.5 sm:px-6">
- <div className="flex items-center justify-between w-full sm:w-auto">
- <Link
- href="/"
- onClick={() => stopAudio()}
- className="inline-flex items-center gap-1.5 border border-white/15 bg-[#FAF9F5] px-3 py-1.5 text-xs sm:text-sm font-semibold text-zinc-200 hover:border-[#EA580C]/50 hover:text-[#FDE68A] transition-colors"
- >
- <ArrowLeft className="h-3.5 w-3.5" />
- <span>To-Do 진도표</span>
- </Link>
+  return (
+    <div className="min-h-screen bg-canvas text-body-dark pb-36">
+      {/* 상단 고정 네비게이션: 모바일 2행 분리 */}
+      <header className="sticky top-0 z-30 border-b border-black/10 bg-canvas/95 backdrop-blur-md">
+        <div className="mx-auto flex max-w-4xl flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 px-4 py-2.5 sm:px-6">
+          <div className="flex items-center justify-between w-full sm:w-auto">
+            <Link
+              href="/"
+              onClick={() => stopAudio()}
+              className="inline-flex items-center gap-1.5 border border-black/15 bg-white px-3 py-1.5 text-xs sm:text-sm font-semibold text-gray-800 hover:border-brand/50 hover:text-brand-dark transition-colors"
+            >
+              <ArrowLeft className="h-3.5 w-3.5" />
+              <span>To-Do 진도표</span>
+            </Link>
 
- <div className="flex items-center gap-1.5">
- {lessonNumber > 1 && (
- <Link
- href={`/lesson/${lang}/${lessonNumber - 1}`}
- onClick={() => stopAudio()}
- className="border border-black/10 bg-[#FAF9F5] p-1.5 text-gray-700 hover:border-white/30 hover:text-gray-900"
- title="이전 과"
- >
- <ArrowLeft className="h-4 w-4" />
- </Link>
- )}
- {lessonNumber < 120 && (
- <Link
- href={`/lesson/${lang}/${lessonNumber + 1}`}
- onClick={() => stopAudio()}
- className="border border-black/10 bg-[#FAF9F5] p-1.5 text-gray-700 hover:border-white/30 hover:text-gray-900"
- title="다음 과"
- >
- <ArrowRight className="h-4 w-4" />
- </Link>
- )}
- </div>
- </div>
+            <div className="flex items-center gap-1.5">
+              {lessonNumber > 1 && (
+                <Link
+                  href={`/lesson/${lang}/${lessonNumber - 1}`}
+                  onClick={() => stopAudio()}
+                  className="border border-black/10 bg-white p-1.5 text-gray-700 hover:border-black/30 hover:text-gray-900"
+                  title="이전 과"
+                >
+                  <ArrowLeft className="h-4 w-4" />
+                </Link>
+              )}
+              {lessonNumber < 120 && (
+                <Link
+                  href={`/lesson/${lang}/${lessonNumber + 1}`}
+                  onClick={() => stopAudio()}
+                  className="border border-black/10 bg-white p-1.5 text-gray-700 hover:border-black/30 hover:text-gray-900"
+                  title="다음 과"
+                >
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              )}
+            </div>
+          </div>
 
- <div className="flex items-center justify-center sm:justify-end w-full sm:w-auto">
- <span className="w-full sm:w-auto text-center rounded-full border border-[#EA580C]/40 bg-[#EA580C]/15 px-3 py-1 text-xs font-bold text-[#FDE68A]">
- 학습 횟수: {lesson.completed_count} / {totalTargetCount}회
- {isGraduated ? ' (졸업 완료)' : ''}
- </span>
- </div>
- </div>
- </header>
+          <div className="flex items-center justify-center sm:justify-end w-full sm:w-auto">
+            <span className="w-full sm:w-auto text-center rounded-full border border-brand/40 bg-brand/10 px-3 py-1 text-xs font-bold text-brand-dark">
+              학습 횟수: {lesson.completed_count} / {totalTargetCount}회
+              {isGraduated ? ' (졸업 완료)' : ''}
+            </span>
+          </div>
+        </div>
+      </header>
 
- <main className="mx-auto max-w-4xl px-4 pt-6 sm:px-6 space-y-6">
- {/* 과 타이틀 & 전체 오디오/해설 컨트롤 헤더: 완전 1행 1요소 수직 스택 */}
- <section className="border border-white/12 bg-white p-5 sm:p-6 shadow-xl space-y-4">
- <div className="flex flex-col gap-2.5 w-full">
- {/* 1행: 언어 및 과 번호 배지 */}
- <div>
- <span className="inline-block bg-[#EA580C] px-2.5 py-1 text-xs font-extrabold text-black tracking-wider">
- {lang === 'en' ? 'ENGLISH' : 'JAPANESE'} · LESSON{' '}
- {String(lessonNumber).padStart(3, '0')}
- </span>
- </div>
+      <main className="mx-auto max-w-4xl px-4 pt-6 sm:px-6 space-y-6">
+        {/* 과 타이틀 & 전체 오디오/해설 컨트롤 헤더: 완전 1행 1요소 수직 스택 */}
+        <section className="border border-black/10 bg-white p-5 sm:p-6 shadow-sm space-y-4">
+          <div className="flex flex-col gap-2.5 w-full">
+            {/* 1행: 언어 및 과 번호 배지 */}
+            <div>
+              <span className="inline-block bg-brand px-2.5 py-1 text-xs font-extrabold text-white tracking-wider">
+                {lang === 'en' ? 'ENGLISH' : 'JAPANESE'} · LESSON{' '}
+                {String(lessonNumber).padStart(3, '0')}
+              </span>
+            </div>
 
- {/* 2행: 문단 및 문장 수 정보 */}
- <div className="text-xs text-gray-600 font-medium">
- {lesson.paragraph_count}개 문단 · 총 {lesson.sentence_count}개 문장 수록
- </div>
+            {/* 2행: 문단 및 문장 수 정보 */}
+            <div className="text-xs text-gray-600 font-medium">
+              {lesson.paragraph_count}개 문단 · 총 {lesson.sentence_count}개 문장 수록
+            </div>
 
- {/* 3행: 과 제목 */}
- <h1 className="text-xl sm:text-2xl font-extrabold tracking-tight text-gray-900 select-none pt-0.5">
- {lesson.title}
- </h1>
+            {/* 3행: 과 제목 */}
+            <h1 className="text-xl sm:text-2xl font-extrabold tracking-tight select-none pt-0.5">
+              {lesson.title}
+            </h1>
 
- {/* 4행 & 5행: 전체 재생 및 해설 펼침 버튼 (각각 1행씩 완전 분리) */}
- {lesson.has_content && (
- <div className="flex flex-col gap-2.5 w-full pt-3 border-t border-black/10">
- <button
- type="button"
- onClick={handlePlayAllLesson}
- className={`w-full inline-flex items-center justify-center gap-2 px-4 py-3 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
- playbackMode === 'all_lesson'
- ? 'bg-[#EA580C] text-black shadow-lg'
- : 'border border-[#EA580C]/50 bg-[#EA580C]/15 text-[#FDE68A] hover:bg-[#EA580C] hover:text-black'
- }`}
- >
- <ListMusic className="h-4 w-4 shrink-0" />
- <span>
- {playbackMode === 'all_lesson' ? '전체 연속재생 정지' : '과 전체 연속 듣기'}
- </span>
- </button>
+            {/* 4행 & 5행: 전체 재생 및 해설 펼침 버튼 (각각 1행씩 완전 분리) */}
+            {lesson.has_content && (
+              <div className="flex flex-col gap-2.5 w-full pt-3 border-t border-black/10">
+                <button
+                  type="button"
+                  onClick={handlePlayAllLesson}
+                  className={`w-full inline-flex items-center justify-center gap-2 px-4 py-3 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                    playbackMode === 'all_lesson'
+                      ? 'bg-brand text-white shadow-md'
+                      : 'border border-brand/50 bg-brand/10 text-brand-dark hover:bg-brand hover:text-white'
+                  }`}
+                >
+                  <ListMusic className="h-4 w-4 shrink-0" />
+                  <span>
+                    {playbackMode === 'all_lesson' ? '전체 연속재생 정지' : '과 전체 연속 듣기'}
+                  </span>
+                </button>
 
- <button
- type="button"
- onClick={toggleAllAccordions}
- className="w-full inline-flex items-center justify-center gap-2 border border-white/15 bg-[#1a1a22] px-4 py-3 text-xs sm:text-sm font-semibold text-zinc-200 hover:border-white/30 transition-colors cursor-pointer"
- >
- <BookOpen className="h-4 w-4 text-[#EA580C] shrink-0" />
- <span>{allExpanded ? '해석·해설 모두 접기' : '해석·해설 모두 펼치기'}</span>
- </button>
- </div>
- )}
- </div>
+                <button
+                  type="button"
+                  onClick={toggleAllAccordions}
+                  className="w-full inline-flex items-center justify-center gap-2 border border-black/15 bg-[#FAF9F5] px-4 py-3 text-xs sm:text-sm font-semibold text-gray-800 hover:border-brand/40 transition-colors cursor-pointer"
+                >
+                  <BookOpen className="h-4 w-4 text-brand shrink-0" />
+                  <span>{allExpanded ? '해석·해설 모두 접기' : '해석·해설 모두 펼치기'}</span>
+                </button>
+              </div>
+            )}
+          </div>
 
- {/* 사용 안내 팁 바: 모바일 2행 분리 */}
- <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 border border-white/8 bg-[#0c0c10] px-3.5 py-2.5 text-xs text-gray-600">
- <span className="w-full sm:w-auto">
- 💡 각 문단의 <strong className="text-[#FDE68A]">[문단 연속 듣기]</strong>, 각 문장의{' '}
- <strong className="text-[#FDE68A]">[1문장 듣기]</strong> ·{' '}
- <strong className="text-emerald-300">[1문장 반복]</strong> ·{' '}
- <strong className="text-gray-900">[해석·해설 펼침]</strong> 버튼을 터치해 학습하세요.
- </span>
+          {/* 사용 안내 팁 바: 모바일 2행 분리 */}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 border border-black/10 bg-[#FAF9F5] px-3.5 py-2.5 text-xs text-gray-600">
+            <span className="w-full sm:w-auto">
+              💡 각 문단의 <strong className="text-brand-dark">[문단 연속 듣기]</strong>, 각 문장의{' '}
+              <strong className="text-brand-dark">[1문장 듣기]</strong> ·{' '}
+              <strong className="text-emerald-700">[1문장 반복]</strong> ·{' '}
+              <strong className="text-gray-900">[해석·해설 펼침]</strong> 버튼을 터치해 학습하세요.
+            </span>
 
- {/* 재생 배속 선택 (모바일 단독 1행) */}
- <div className="flex items-center justify-between sm:justify-end gap-1 w-full sm:w-auto pt-2 sm:pt-0 border-t sm:border-t-0 border-black/5">
- <span className="text-[11px] text-gray-500 mr-1 shrink-0">배속:</span>
- <div className="flex items-center gap-1">
- {[0.75, 0.9, 1.0, 1.15, 1.25].map((rate) => (
- <button
- key={rate}
- type="button"
- onClick={() => setPlaybackRate(rate)}
- className={`px-2.5 py-1 sm:py-0.5 text-xs font-mono font-semibold cursor-pointer ${
- playbackRate === rate
- ? 'bg-[#EA580C] text-black font-bold'
- : 'bg-white/5 text-gray-600 hover:text-gray-900'
- }`}
- >
- {rate}x
- </button>
- ))}
- </div>
- </div>
- </div>
- </section>
+            {/* 재생 배속 선택 (모바일 단독 1행) */}
+            <div className="flex items-center justify-between sm:justify-end gap-1 w-full sm:w-auto pt-2 sm:pt-0 border-t sm:border-t-0 border-black/5">
+              <span className="text-[11px] text-gray-500 mr-1 shrink-0">배속:</span>
+              <div className="flex items-center gap-1">
+                {[0.75, 0.9, 1.0, 1.15, 1.25].map((rate) => (
+                  <button
+                    key={rate}
+                    type="button"
+                    onClick={() => setPlaybackRate(rate)}
+                    className={`px-2.5 py-1 sm:py-0.5 text-xs font-mono font-semibold cursor-pointer ${
+                      playbackRate === rate
+                        ? 'bg-brand text-white font-bold'
+                        : 'bg-black/5 text-gray-600 hover:text-gray-900'
+                    }`}
+                  >
+                    {rate}x
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
 
- {/* 원고가 아직 없는 과일 때 안내 */}
- {!lesson.has_content ? (
- <section className="border border-black/10 bg-white p-8 text-center space-y-4">
- <p className="text-base sm:text-lg font-bold text-gray-900">
- 아직 이 과의 마크다운(`.md`) 원고가 작성되지 않았습니다.
- </p>
- <p className="text-sm text-gray-600 max-w-xl mx-auto leading-relaxed">
- <code className="bg-white/10 px-2 py-0.5 text-amber-300">
- C:\coding\LANGUAGE\contents\{lang}\lesson_{String(lessonNumber).padStart(3, '0')}.md
- </code>{' '}
- 파일을 생성하신 뒤{' '}
- <code className="bg-white/10 px-2 py-0.5 text-emerald-300">
- python scripts/sync_lessons.py
- </code>
- 를 실행하면 문장과 원어민 음성이 자동으로 채워집니다.
- </p>
- </section>
+        {/* 원고가 아직 없는 과일 때 안내 */}
+        {!lesson.has_content ? (
+          <section className="border border-black/10 bg-white p-8 text-center space-y-4">
+            <p className="text-base sm:text-lg font-bold text-gray-900">
+              아직 이 과의 마크다운(`.md`) 원고가 작성되지 않았습니다.
+            </p>
+            <p className="text-sm text-gray-600 max-w-xl mx-auto leading-relaxed">
+              <code className="bg-brand-surface px-2 py-0.5 text-brand-dark">
+                C:\coding\LANGUAGE\contents\{lang}\lesson_{String(lessonNumber).padStart(3, '0')}.md
+              </code>{' '}
+              파일을 생성하신 뒤{' '}
+              <code className="bg-emerald-50 px-2 py-0.5 text-emerald-700">
+                python scripts/sync_lessons.py
+              </code>
+              를 실행하면 문장과 원어민 음성이 자동으로 채워집니다.
+            </p>
+          </section>
  ) : (
  /* 문단 및 문장 본문 리스트 */
  <div className="space-y-6">
@@ -560,320 +560,320 @@ export default function LessonPlayerClient({
  const isParaPlaying =
  playbackMode === 'paragraph' && activeParagraphIdx === para.paragraph_index;
 
- return (
- <section
- key={para.paragraph_index}
- className={`border transition-all p-4 sm:p-6 space-y-4 ${isParaPlaying
- ? 'border-[#EA580C]/70 bg-[#16161f] shadow-lg'
- : 'border-black/10 bg-white'
- }`}
- >
- {/* 문단 헤더: 완전 1행 1요소 분리 (줄바꿈 원천 차단) */}
- <div className="flex flex-col gap-2 border-b border-black/10 pb-3.5">
- <div className="flex items-center gap-2">
- <span className="bg-white/10 px-2.5 py-0.5 text-xs font-mono font-bold text-[#EA580C]">
- 문단 {para.paragraph_index}
- </span>
- </div>
+              return (
+                <section
+                  key={para.paragraph_index}
+                  className={`border transition-all p-4 sm:p-6 space-y-4 ${isParaPlaying
+                    ? 'border-brand bg-brand-surface/50 shadow-md'
+                    : 'border-black/10 bg-white'
+                  }`}
+                >
+                  {/* 문단 헤더: 완전 1행 1요소 분리 (줄바꿈 원천 차단) */}
+                  <div className="flex flex-col gap-2 border-b border-black/10 pb-3.5">
+                    <div className="flex items-center gap-2">
+                      <span className="bg-brand/10 px-2.5 py-0.5 text-xs font-mono font-bold text-brand">
+                        문단 {para.paragraph_index}
+                      </span>
+                    </div>
 
- <h2 className="text-base sm:text-lg font-bold text-gray-900 leading-snug">
- {para.paragraph_title}
- </h2>
+                    <h2 className="text-base sm:text-lg font-bold leading-snug">
+                      {para.paragraph_title}
+                    </h2>
 
- <button
- type="button"
- onClick={() =>
- handlePlayParagraph(para.paragraph_index, para.sentences)
- }
- className={`w-full inline-flex items-center justify-center gap-2 px-4 py-3 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
- isParaPlaying
- ? 'bg-[#EA580C] text-black shadow-md'
- : 'border border-[#EA580C]/40 bg-[#EA580C]/10 text-[#FDE68A] hover:bg-[#EA580C] hover:text-black'
- }`}
- >
- {isParaPlaying ? (
- <>
- <Square className="h-3.5 w-3.5 fill-current shrink-0" />
- <span>문단 읽기 정지</span>
- </>
- ) : (
- <>
- <Volume2 className="h-4 w-4 shrink-0" />
- <span>이 문단 연속 읽어주기 ({para.sentences.length}문장)</span>
- </>
- )}
- </button>
- </div>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        handlePlayParagraph(para.paragraph_index, para.sentences)
+                      }
+                      className={`w-full inline-flex items-center justify-center gap-2 px-4 py-3 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                        isParaPlaying
+                          ? 'bg-brand text-white shadow-md'
+                          : 'border border-brand/40 bg-brand/10 text-brand-dark hover:bg-brand hover:text-white'
+                      }`}
+                    >
+                      {isParaPlaying ? (
+                        <>
+                          <Square className="h-3.5 w-3.5 fill-current shrink-0" />
+                          <span>문단 읽기 정지</span>
+                        </>
+                      ) : (
+                        <>
+                          <Volume2 className="h-4 w-4 shrink-0" />
+                          <span>이 문단 연속 읽어주기 ({para.sentences.length}문장)</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
 
- {/* 문단 내 문장 카드 목록 */}
- <div className="space-y-3">
- {para.sentences.map((sentence) => {
- const isCurrentActive = activeSentenceId === sentence.id;
- const isSinglePlaying =
- isCurrentActive && playbackMode === 'single';
- const isLoopingThis =
- isCurrentActive && playbackMode === 'loop_sentence';
- const isOpen = Boolean(expandedIds[sentence.id]);
+                  {/* 문단 내 문장 카드 목록 */}
+                  <div className="space-y-3">
+                    {para.sentences.map((sentence) => {
+                      const isCurrentActive = activeSentenceId === sentence.id;
+                      const isSinglePlaying =
+                        isCurrentActive && playbackMode === 'single';
+                      const isLoopingThis =
+                        isCurrentActive && playbackMode === 'loop_sentence';
+                      const isOpen = Boolean(expandedIds[sentence.id]);
 
- return (
- <div
- key={sentence.id}
- ref={(el) => {
- sentenceCardRefs.current[sentence.id] = el;
- }}
- className={`border transition-all ${isCurrentActive
- ? 'border-[#EA580C] bg-[#1b1b26] shadow-lg'
- : 'border-black/10 bg-[#0e0e13] hover:border-white/20'
- }`}
- >
- {/* 문장 상단 영역 */}
- <div className="p-4 sm:p-5 flex flex-col gap-3">
- <div className="flex items-start justify-between gap-3">
- {/* 문장 번호 + 원어 문장 (클릭 시 펼침 메뉴 토글) */}
- <button
- type="button"
- onClick={() => toggleSentenceAccordion(sentence.id)}
- className="flex-1 text-left flex items-start gap-3 cursor-pointer group"
- >
- <span
- className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-mono font-bold ${isCurrentActive
- ? 'bg-[#EA580C] text-black'
- : 'bg-white/10 text-gray-600 group-hover:text-gray-900'
- }`}
- >
- {sentence.sentence_index}
- </span>
- <span className="text-base sm:text-lg font-bold leading-relaxed text-gray-900 group-hover:text-[#FDE68A] transition-colors">
- {sentence.text}
- </span>
- </button>
- </div>
+                      return (
+                        <div
+                          key={sentence.id}
+                          ref={(el) => {
+                            sentenceCardRefs.current[sentence.id] = el;
+                          }}
+                          className={`border transition-all ${isCurrentActive
+                            ? 'border-brand bg-brand-surface/60 shadow-md'
+                            : 'border-black/10 bg-[#FAF9F5] hover:border-brand/30'
+                          }`}
+                        >
+                          {/* 문장 상단 영역 */}
+                          <div className="p-4 sm:p-5 flex flex-col gap-3">
+                            <div className="flex items-start justify-between gap-3">
+                              {/* 문장 번호 + 원어 문장 (클릭 시 펼침 메뉴 토글) */}
+                              <button
+                                type="button"
+                                onClick={() => toggleSentenceAccordion(sentence.id)}
+                                className="flex-1 text-left flex items-start gap-3 cursor-pointer group"
+                              >
+                                <span
+                                  className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-mono font-bold ${isCurrentActive
+                                    ? 'bg-brand text-white'
+                                    : 'bg-black/5 text-gray-600 group-hover:text-gray-900'
+                                  }`}
+                                >
+                                  {sentence.sentence_index}
+                                </span>
+                                <span className="text-base sm:text-lg font-bold leading-relaxed text-gray-900 group-hover:text-brand-dark transition-colors">
+                                  {sentence.text}
+                                </span>
+                              </button>
+                            </div>
 
- {/* 문장 하단 컨트롤 바: 모바일 1줄에 1버튼씩 완전 분리 (줄바꿈 원천 차단) */}
- <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pt-1 pl-0 sm:pl-9">
- <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
- {/* 1문장 읽어주는 버튼 */}
- <button
- type="button"
- onClick={() => handlePlaySingleSentence(sentence)}
- className={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 sm:py-1.5 text-xs font-bold transition-all cursor-pointer ${
- isSinglePlaying
- ? 'bg-[#EA580C] text-black shadow-md'
- : 'border border-white/15 bg-[#171720] text-zinc-200 hover:border-[#EA580C]/60 hover:text-[#FDE68A]'
- }`}
- >
- {isSinglePlaying ? (
- <>
- <Square className="h-3.5 w-3.5 fill-current shrink-0" />
- <span>1문장 정지</span>
- </>
- ) : (
- <>
- <Play className="h-3.5 w-3.5 fill-current text-[#EA580C] shrink-0" />
- <span>1문장 듣기</span>
- </>
- )}
- </button>
+                            {/* 문장 하단 컨트롤 바: 모바일 1줄에 1버튼씩 완전 분리 (줄바꿈 원천 차단) */}
+                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pt-1 pl-0 sm:pl-9">
+                              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
+                                {/* 1문장 읽어주는 버튼 */}
+                                <button
+                                  type="button"
+                                  onClick={() => handlePlaySingleSentence(sentence)}
+                                  className={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 sm:py-1.5 text-xs font-bold transition-all cursor-pointer ${
+                                    isSinglePlaying
+                                      ? 'bg-brand text-white shadow-md'
+                                      : 'border border-black/15 bg-white text-gray-800 hover:border-brand/60 hover:text-brand-dark'
+                                  }`}
+                                >
+                                  {isSinglePlaying ? (
+                                    <>
+                                      <Square className="h-3.5 w-3.5 fill-current shrink-0" />
+                                      <span>1문장 정지</span>
+                                    </>
+                                  ) : (
+                                    <>
+                                      <Play className="h-3.5 w-3.5 fill-current text-brand shrink-0" />
+                                      <span>1문장 듣기</span>
+                                    </>
+                                  )}
+                                </button>
 
- {/* 1문장 반복해서 들을 수 있는 버튼 */}
- <button
- type="button"
- onClick={() => handleLoopSentence(sentence)}
- className={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 sm:py-1.5 text-xs font-bold transition-all cursor-pointer ${
- isLoopingThis
- ? 'bg-emerald-400 text-black shadow-md'
- : 'border border-white/15 bg-[#171720] text-zinc-200 hover:border-emerald-400/60 hover:text-emerald-300'
- }`}
- >
- <Repeat className="h-3.5 w-3.5 shrink-0" />
- <span>
- {isLoopingThis
- ? `1문장 반복 중 (${loopCounter}회차 · 정지)`
- : '1문장 반복 듣기'}
- </span>
- </button>
- </div>
+                                {/* 1문장 반복해서 들을 수 있는 버튼 */}
+                                <button
+                                  type="button"
+                                  onClick={() => handleLoopSentence(sentence)}
+                                  className={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 sm:py-1.5 text-xs font-bold transition-all cursor-pointer ${
+                                    isLoopingThis
+                                      ? 'bg-emerald-600 text-white shadow-md'
+                                      : 'border border-black/15 bg-white text-gray-800 hover:border-emerald-600/60 hover:text-emerald-700'
+                                  }`}
+                                >
+                                  <Repeat className="h-3.5 w-3.5 shrink-0" />
+                                  <span>
+                                    {isLoopingThis
+                                      ? `1문장 반복 중 (${loopCounter}회차 · 정지)`
+                                      : '1문장 반복 듣기'}
+                                  </span>
+                                </button>
+                              </div>
 
- {/* 한글 해석 및 해설 펼침 메뉴 버튼 */}
- <button
- type="button"
- onClick={() => toggleSentenceAccordion(sentence.id)}
- className={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 sm:py-1.5 text-xs font-semibold transition-colors cursor-pointer ${
- isOpen
- ? 'bg-[#EA580C]/20 text-[#FDE68A] border border-[#EA580C]/40'
- : 'bg-white/5 text-gray-700 hover:bg-white/10 hover:text-gray-900 border border-black/10'
- }`}
- >
- <span>{isOpen ? '한글 해석·해설 접기' : '한글 해석·해설 펼치기'}</span>
- {isOpen ? (
- <ChevronUp className="h-3.5 w-3.5 shrink-0" />
- ) : (
- <ChevronDown className="h-3.5 w-3.5 shrink-0" />
- )}
- </button>
- </div>
- </div>
+                              {/* 한글 해석 및 해설 펼침 메뉴 버튼 */}
+                              <button
+                                type="button"
+                                onClick={() => toggleSentenceAccordion(sentence.id)}
+                                className={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 sm:py-1.5 text-xs font-semibold transition-colors cursor-pointer ${
+                                  isOpen
+                                    ? 'bg-brand/15 text-brand-dark border border-brand/40'
+                                    : 'bg-white text-gray-700 hover:bg-black/5 hover:text-gray-900 border border-black/10'
+                                }`}
+                              >
+                                <span>{isOpen ? '한글 해석·해설 접기' : '한글 해석·해설 펼치기'}</span>
+                                {isOpen ? (
+                                  <ChevronUp className="h-3.5 w-3.5 shrink-0" />
+                                ) : (
+                                  <ChevronDown className="h-3.5 w-3.5 shrink-0" />
+                                )}
+                              </button>
+                            </div>
+                          </div>
 
- {/* 아코디언 펼침 영역: 한글 해석(KO) + 어휘·문법 해설(NOTE) */}
- {isOpen && (
- <div className="border-t border-black/10 bg-[#14141d] px-4 py-4 sm:px-6 pl-9 sm:pl-12 space-y-3 ">
- <p className="text-sm sm:text-base font-bold text-gray-900 leading-relaxed">
- {sentence.ko}
- </p>
+                          {/* 아코디언 펼침 영역: 한글 해석(KO) + 어휘·문법 해설(NOTE) */}
+                          {isOpen && (
+                            <div className="border-t border-black/10 bg-white px-4 py-4 sm:px-6 pl-9 sm:pl-12 space-y-3">
+                              <p className="text-sm sm:text-base font-bold text-gray-900 leading-relaxed">
+                                {sentence.ko}
+                              </p>
 
- {sentence.note && (
- <div className="space-y-1 border-t border-white/8 pt-2.5">
- {renderFormattedNote(sentence.note)}
- </div>
- )}
- </div>
- )}
- </div>
- );
+                              {sentence.note && (
+                                <div className="space-y-1 border-t border-black/10 pt-2.5">
+                                  {renderFormattedNote(sentence.note)}
+                                </div>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </section>
+              );
  })}
  </div>
- </section>
- );
- })}
- </div>
  )}
 
- {/* 본문 하단 대형 완료 카드 */}
- <section className="border border-[#EA580C]/40 bg-[#13131a] p-5 sm:p-6 shadow-xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
- <div className="space-y-1">
- <h3 className="text-base sm:text-lg font-bold text-gray-900">
- {isGraduated
- ? '🎉 이 과의 본학습 및 복습을 모두 완수하셨습니다!'
- : `학습 완료 카운트 (${lesson.completed_count} / ${totalTargetCount}회)`}
- </h3>
- <p className="text-xs sm:text-sm text-gray-600">
- {isGraduated
- ? '이미 진도표에서 졸업한 과입니다. 추가 복습을 원하시면 언제든 완료 버튼을 더 누르실 수 있습니다.'
- : `완료 버튼을 누르면 학습 횟수가 +1 카운트되며, 총 ${totalTargetCount}회(본학습 1회 + 복습 ${settings.review_count}회)가 채워지면 진도표에서 사라집니다.`}
- </p>
- </div>
+        {/* 본문 하단 대형 완료 카드 */}
+        <section className="border border-brand/40 bg-brand-surface/60 p-5 sm:p-6 shadow-sm flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="space-y-1">
+            <h3 className="text-base sm:text-lg font-bold">
+              {isGraduated
+                ? '🎉 이 과의 본학습 및 복습을 모두 완수하셨습니다!'
+                : `학습 완료 카운트 (${lesson.completed_count} / ${totalTargetCount}회)`}
+            </h3>
+            <p className="text-xs sm:text-sm text-gray-600">
+              {isGraduated
+                ? '이미 진도표에서 졸업한 과입니다. 추가 복습을 원하시면 언제든 완료 버튼을 더 누르실 수 있습니다.'
+                : `완료 버튼을 누르면 학습 횟수가 +1 카운트되며, 총 ${totalTargetCount}회(본학습 1회 + 복습 ${settings.review_count}회)가 채워지면 진도표에서 사라집니다.`}
+            </p>
+          </div>
 
- <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 w-full sm:w-auto shrink-0">
- <button
- type="button"
- onClick={handleCompleteStudy}
- className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#EA580C] px-5 py-3 text-sm sm:text-base font-extrabold text-black hover:bg-[#e5c247] transition-all shadow-lg cursor-pointer"
- >
- <CheckCircle2 className="h-5 w-5 shrink-0" />
- <span>
- 학습 완료 (Count +1 · {lesson.completed_count}/{totalTargetCount})
- </span>
- </button>
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 w-full sm:w-auto shrink-0">
+            <button
+              type="button"
+              onClick={handleCompleteStudy}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand px-5 py-3 text-sm sm:text-base font-extrabold text-white hover:bg-brand-hover transition-all shadow-md cursor-pointer"
+            >
+              <CheckCircle2 className="h-5 w-5 shrink-0" />
+              <span>
+                학습 완료 (Count +1 · {lesson.completed_count}/{totalTargetCount})
+              </span>
+            </button>
 
- <button
- type="button"
- onClick={() => {
- stopAudio();
- router.push('/');
- }}
- className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 border border-white/15 bg-[#1b1b24] px-4 py-3 text-xs sm:text-sm font-bold text-zinc-200 hover:border-white/30 cursor-pointer"
- >
- <span>진도표 확인</span>
- </button>
- </div>
- </section>
- </main>
+            <button
+              type="button"
+              onClick={() => {
+                stopAudio();
+                router.push('/');
+              }}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 border border-black/15 bg-white px-4 py-3 text-xs sm:text-sm font-bold text-gray-800 hover:border-brand/40 cursor-pointer"
+            >
+              <span>진도표 확인</span>
+            </button>
+          </div>
+        </section>
+      </main>
 
- {/* 하단 고정(Sticky) 오디오 & 완료 플로팅 컨트롤 바 */}
- <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-[#EA580C]/30 bg-[#0e0e14]/95 backdrop-blur-md">
- <div className="mx-auto flex max-w-4xl flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 px-4 py-2.5 sm:px-6">
- {/* 현재 오디오 재생 상태 표시 */}
- <div className="flex items-center justify-between sm:justify-start gap-3 min-w-0">
- {playbackMode !== 'idle' ? (
- <div className="flex items-center gap-2.5 min-w-0">
- <button
- type="button"
- onClick={handleTogglePause}
- className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full bg-[#EA580C] text-black hover:bg-[#e5c247] cursor-pointer"
- title={isPaused ? '다시 재생' : '일시정지'}
- >
- {isPaused ? (
- <Play className="h-4 w-4 fill-current" />
- ) : (
- <Pause className="h-4 w-4 fill-current" />
- )}
- </button>
- <button
- type="button"
- onClick={stopAudio}
- className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/5 text-gray-900 hover:bg-white/15 cursor-pointer"
- title="정지"
- >
- <Square className="h-3.5 w-3.5 fill-current" />
- </button>
- <div className="min-w-0">
- <p className="text-xs font-bold text-[#FDE68A] truncate">
- {playbackMode === 'single' && '▶️ 1문장 재생 중'}
- {playbackMode === 'loop_sentence' &&
- `🔁 1문장 반복 중 (${loopCounter}회)`}
- {playbackMode === 'paragraph' &&
- `📄 문단 ${activeParagraphIdx} 재생 중`}
- {playbackMode === 'all_lesson' && '🎵 전체 연속 재생 중'}
- </p>
- <p className="text-[11px] text-gray-600 truncate">
- 배속 {playbackRate}x · 문장 클릭 시 즉시 이동
- </p>
- </div>
- </div>
- ) : (
- <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 truncate">
- <Volume2 className="h-4 w-4 text-[#EA580C] shrink-0" />
- <span className="truncate">문장/문단의 재생 버튼을 눌러보세요.</span>
- </div>
- )}
+      {/* 하단 고정(Sticky) 오디오 & 완료 플로팅 컨트롤 바 */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-brand/30 bg-white/95 backdrop-blur-md shadow-lg">
+        <div className="mx-auto flex max-w-4xl flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 px-4 py-2.5 sm:px-6">
+          {/* 현재 오디오 재생 상태 표시 */}
+          <div className="flex items-center justify-between sm:justify-start gap-3 min-w-0">
+            {playbackMode !== 'idle' ? (
+              <div className="flex items-center gap-2.5 min-w-0">
+                <button
+                  type="button"
+                  onClick={handleTogglePause}
+                  className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full bg-brand text-white hover:bg-brand-hover cursor-pointer"
+                  title={isPaused ? '다시 재생' : '일시정지'}
+                >
+                  {isPaused ? (
+                    <Play className="h-4 w-4 fill-current" />
+                  ) : (
+                    <Pause className="h-4 w-4 fill-current" />
+                  )}
+                </button>
+                <button
+                  type="button"
+                  onClick={stopAudio}
+                  className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full border border-black/15 bg-[#FAF9F5] text-gray-800 hover:bg-black/5 cursor-pointer"
+                  title="정지"
+                >
+                  <Square className="h-3.5 w-3.5 fill-current" />
+                </button>
+                <div className="min-w-0">
+                  <p className="text-xs font-bold text-brand-dark truncate">
+                    {playbackMode === 'single' && '▶️ 1문장 재생 중'}
+                    {playbackMode === 'loop_sentence' &&
+                      `🔁 1문장 반복 중 (${loopCounter}회)`}
+                    {playbackMode === 'paragraph' &&
+                      `📄 문단 ${activeParagraphIdx} 재생 중`}
+                    {playbackMode === 'all_lesson' && '🎵 전체 연속 재생 중'}
+                  </p>
+                  <p className="text-[11px] text-gray-600 truncate">
+                    배속 {playbackRate}x · 문장 클릭 시 즉시 이동
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 truncate">
+                <Volume2 className="h-4 w-4 text-brand shrink-0" />
+                <span className="truncate">문장/문단의 재생 버튼을 눌러보세요.</span>
+              </div>
+            )}
 
- {/* 모바일 우측 초기화 버튼 */}
- {lesson.completed_count > 0 && (
- <button
- type="button"
- onClick={async () => {
- await updateLessonCompletion(lesson.id, 0);
- setLesson({ ...lesson, completed_count: 0, last_studied_at: null });
- toast.info('이 과의 학습 횟수를 0회로 초기화했습니다.');
- }}
- className="sm:hidden border border-black/10 p-2 text-gray-600 hover:text-gray-900 cursor-pointer shrink-0"
- title="카운트 0으로 초기화"
- >
- <RotateCcw className="h-3.5 w-3.5" />
- </button>
- )}
- </div>
+            {/* 모바일 우측 초기화 버튼 */}
+            {lesson.completed_count > 0 && (
+              <button
+                type="button"
+                onClick={async () => {
+                  await updateLessonCompletion(lesson.id, 0);
+                  setLesson({ ...lesson, completed_count: 0, last_studied_at: null });
+                  toast.info('이 과의 학습 횟수를 0회로 초기화했습니다.');
+                }}
+                className="sm:hidden border border-black/10 p-2 text-gray-600 hover:text-gray-900 cursor-pointer shrink-0"
+                title="카운트 0으로 초기화"
+              >
+                <RotateCcw className="h-3.5 w-3.5" />
+              </button>
+            )}
+          </div>
 
- {/* 우측 하단 빠른 완료 버튼: 모바일에서는 전폭(w-full) */}
- <div className="flex items-center gap-2 w-full sm:w-auto">
- {lesson.completed_count > 0 && (
- <button
- type="button"
- onClick={async () => {
- await updateLessonCompletion(lesson.id, 0);
- setLesson({ ...lesson, completed_count: 0, last_studied_at: null });
- toast.info('이 과의 학습 횟수를 0회로 초기화했습니다.');
- }}
- className="hidden sm:inline-flex border border-black/10 p-2 text-gray-600 hover:text-gray-900 cursor-pointer"
- title="카운트 0으로 초기화"
- >
- <RotateCcw className="h-4 w-4" />
- </button>
- )}
+          {/* 우측 하단 빠른 완료 버튼: 모바일에서는 전폭(w-full) */}
+          <div className="flex items-center gap-2 w-full sm:w-auto">
+            {lesson.completed_count > 0 && (
+              <button
+                type="button"
+                onClick={async () => {
+                  await updateLessonCompletion(lesson.id, 0);
+                  setLesson({ ...lesson, completed_count: 0, last_studied_at: null });
+                  toast.info('이 과의 학습 횟수를 0회로 초기화했습니다.');
+                }}
+                className="hidden sm:inline-flex border border-black/10 p-2 text-gray-600 hover:text-gray-900 cursor-pointer"
+                title="카운트 0으로 초기화"
+              >
+                <RotateCcw className="h-4 w-4" />
+              </button>
+            )}
 
- <button
- type="button"
- onClick={handleCompleteStudy}
- className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 bg-[#EA580C] px-4 py-2.5 text-xs sm:text-sm font-extrabold text-black hover:bg-[#e5c247] transition-colors cursor-pointer"
- >
- <CheckCircle2 className="h-4 w-4 shrink-0" />
- <span>
- 완료 Count +1 ({lesson.completed_count}/{totalTargetCount})
- </span>
- </button>
- </div>
- </div>
- </div>
+            <button
+              type="button"
+              onClick={handleCompleteStudy}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 bg-brand px-4 py-2.5 text-xs sm:text-sm font-extrabold text-white hover:bg-brand-hover transition-colors cursor-pointer"
+            >
+              <CheckCircle2 className="h-4 w-4 shrink-0" />
+              <span>
+                완료 Count +1 ({lesson.completed_count}/{totalTargetCount})
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
  </div>
  );
 }

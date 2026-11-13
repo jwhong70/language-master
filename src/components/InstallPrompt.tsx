@@ -146,9 +146,9 @@ export default function InstallPrompt() {
  <div>
  <div className="flex items-center gap-1.5">
  <span className="text-sm font-bold text-white">어학 마스터</span>
- <span className="bg-[#EA580C]/20 px-1.5 py-0.5 text-[10px] font-semibold text-[#FDE68A]">
- 앱으로 추가
- </span>
+              <span className="bg-brand/20 px-1.5 py-0.5 text-[10px] font-semibold text-orange-300">
+                앱으로 추가
+              </span>
  </div>
  <p className="text-xs text-zinc-300">
  {isKakao
@@ -160,15 +160,15 @@ export default function InstallPrompt() {
 
  {/* 우측 액션 버튼 & 닫기 */}
  <div className="flex items-center gap-1.5">
- <button
- onClick={(e) => {
- e.stopPropagation();
- handleInstallClick();
- }}
- className="bg-linear-to-r from-[#EA580C] to-[#EA580C] px-3.5 py-2 text-xs font-bold text-black shadow-lg transition-transform active:scale-95 hover:brightness-110 cursor-pointer"
- >
- {isKakao ? "브라우저로 열기" : "1초 설치"}
- </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleInstallClick();
+                }}
+                className="bg-brand px-3.5 py-2 text-xs font-bold text-white shadow-lg transition-transform active:scale-95 hover:bg-brand-hover cursor-pointer"
+              >
+                {isKakao ? "브라우저로 열기" : "1초 설치"}
+              </button>
  <button
  onClick={handleDismiss}
  aria-label="닫기"
@@ -190,10 +190,10 @@ export default function InstallPrompt() {
  aria-modal="true"
  >
  <div className="w-full max-w-sm border border-[#EA580C]/50 bg-[#16161c] p-6 text-white shadow-2xl animate-in zoom-in-95 duration-200">
- <div className="mb-4 flex items-center justify-between">
- <h3 className="text-lg font-bold text-[#FDE68A]">
- {isKakao ? "💬 외부 브라우저 열기" : "📲 스마트폰 홈 화면에 추가하기"}
- </h3>
+            <div className="mb-4 flex items-center justify-between">
+              <h3 className="text-lg font-bold text-white">
+                {isKakao ? "💬 외부 브라우저 열기" : "📲 스마트폰 홈 화면에 추가하기"}
+              </h3>
  <button
  onClick={() => setShowIOSModal(false)}
  aria-label="닫기"
@@ -293,12 +293,12 @@ export default function InstallPrompt() {
  </div>
  )}
 
- <button
- onClick={() => setShowIOSModal(false)}
- className="mt-6 w-full bg-[#EA580C] py-3 text-sm font-bold text-black shadow-md hover:bg-[#e5c247] active:scale-95 transition-all cursor-pointer"
- >
- 확인했습니다
- </button>
+            <button
+              onClick={() => setShowIOSModal(false)}
+              className="mt-6 w-full bg-brand py-3 text-sm font-bold text-white shadow-md hover:bg-brand-hover active:scale-95 transition-all cursor-pointer"
+            >
+              확인했습니다
+            </button>
  </div>
  </div>
  )}
