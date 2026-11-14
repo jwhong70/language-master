@@ -15,13 +15,13 @@ import {
  Sparkles,
  Volume2,
  Check,
- Filter,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import {
  buildAll120Lessons,
  computeSlidingTodoList,
  DEFAULT_SETTINGS,
+ getTotalTargetCount,
  loadLocalProgress,
  loadLocalSettings,
  syncWithSupabase,
@@ -65,7 +65,7 @@ export default function DashboardClient() {
  });
  }, []);
 
- const totalTargetCount = 1 + Math.max(0, settings.review_count);
+ const totalTargetCount = getTotalTargetCount(settings.review_count);
 
  const enStats = useMemo(
  () => computeSlidingTodoList(lessons, settings, 'en'),
@@ -94,7 +94,7 @@ export default function DashboardClient() {
  await updateStudySettings(next);
  setShowSettingsModal(false);
  toast.success(
- `진도 설정 저장 완료: 하루 영어 ${next.daily_en_count}과 · 일본어 ${next.daily_ja_count}과 · 복습 ${next.review_count}회 (총 ${1 + next.review_count}회 학습)`
+ `진도 설정 저장 완료: 하루 영어 ${next.daily_en_count}과 · 일본어 ${next.daily_ja_count}과 · 복습 ${next.review_count}회 (총 ${getTotalTargetCount(next.review_count)}회 학습)`
  );
  };
 
@@ -387,14 +387,14 @@ export default function DashboardClient() {
                 <span className="text-sm font-medium text-gray-700 shrink-0">회 복습</span>
               </div>
               <p className="mt-1.5 text-xs text-brand-dark">
-                본학습 1회 + 복습 {draftReviewCount}회 = 총 {1 + Number(draftReviewCount)}회 완료 시 졸업
+                본학습 1회 + 복습 {draftReviewCount}회 = 총 {getTotalTargetCount(Number(draftReviewCount) || 0)}회 완료 시 졸업
               </p>
             </div>
           </div>
 
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-2">
             <p className="text-xs text-gray-600">
-              💡 본문에서 [학습 완료] 버튼을 누를 때마다 횟수가 +1 증가하며, 총 {1 + Number(draftReviewCount)}회가 채워지면 To-Do 진도표에서 자동으로 사라집니다.
+              💡 본문에서 [학습 완료] 버튼을 누를 때마다 횟수가 +1 증가하며, 총 {getTotalTargetCount(Number(draftReviewCount) || 0)}회가 채워지면 To-Do 진도표에서 자동으로 사라집니다.
             </p>
             <div className="flex items-center gap-2 self-end sm:self-auto">
               <button

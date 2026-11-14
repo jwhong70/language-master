@@ -15,6 +15,13 @@ export const DEFAULT_SETTINGS: StudySettings = {
   extra_unlocked_ja: 0,
 };
 
+/**
+ * 본학습(1회) + 설정된 복습 횟수를 합산한 총 목표 학습 횟수를 계산합니다.
+ */
+export function getTotalTargetCount(reviewCount: number): number {
+  return 1 + Math.max(0, reviewCount);
+}
+
 interface SeedLesson {
   id: string;
   lang: string;
@@ -28,7 +35,7 @@ interface SeedLesson {
 /**
  * 로컬 시드(lessons_seed.json)를 기반으로 영어 120과 + 일본어 120과 전체 마스터 골격을 생성합니다.
  */
-export function getSeedLessonsMap(): Map<string, SeedLesson> {
+function getSeedLessonsMap(): Map<string, SeedLesson> {
   const map = new Map<string, SeedLesson>();
   const rawLessons = (seedData as { lessons: SeedLesson[] }).lessons || [];
   for (const item of rawLessons) {
@@ -106,7 +113,7 @@ export function loadLocalProgress(): Record<
   }
 }
 
-export function saveLocalProgress(
+function saveLocalProgress(
   progress: Record<string, { completed_count: number; last_studied_at?: string | null }>
 ) {
   if (typeof window === 'undefined') return;
@@ -126,7 +133,7 @@ export function loadLocalSettings(): StudySettings {
   }
 }
 
-export function saveLocalSettings(settings: StudySettings) {
+function saveLocalSettings(settings: StudySettings) {
   if (typeof window === 'undefined') return;
   try {
     window.localStorage.setItem(STORAGE_SETTINGS_KEY, JSON.stringify(settings));
@@ -257,7 +264,7 @@ export function computeSlidingTodoList(
   inReviewCount: number;
   totalRequiredPerLesson: number;
 } {
-  const totalRequiredPerLesson = 1 + Math.max(0, settings.review_count); // 기본 1 + 2 = 3회
+  const totalRequiredPerLesson = getTotalTargetCount(settings.review_count); // 기본 1 + 2 = 3회
   const langLessons = allLessons
     .filter((l) => l.lang === lang)
     .sort((a, b) => a.lesson_number - b.lesson_number);

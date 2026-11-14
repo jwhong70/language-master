@@ -4,8 +4,8 @@
   "description": "영어 120과 · 일본어 90과 누적 복습 To-Do 진도표 & 섀도잉 플레이어",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0a0c",
-  "theme_color": "#0a0a0c",
+  "background_color": "#F9F8F6",
+  "theme_color": "#F9F8F6",
   "orientation": "portrait",
   "icons": [
     {

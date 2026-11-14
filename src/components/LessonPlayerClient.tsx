@@ -22,6 +22,7 @@ import { toast } from 'sonner';
 import {
  buildAll120Lessons,
  DEFAULT_SETTINGS,
+ getTotalTargetCount,
  loadLocalProgress,
  loadLocalSettings,
  syncWithSupabase,
@@ -103,7 +104,7 @@ export default function LessonPlayerClient({
  };
  }, []);
 
- const totalTargetCount = 1 + Math.max(0, settings.review_count);
+ const totalTargetCount = getTotalTargetCount(settings.review_count);
 
  // 문단별 그룹화
  const paragraphs = useMemo(() => {
@@ -351,6 +352,14 @@ export default function LessonPlayerClient({
  `✅ 학습 카운트 완료! (${nextCount}/${totalTargetCount}회) · 복습 ${remain}회 더 완료하면 진도표에서 졸업합니다.`
  );
  }
+ };
+
+ // 학습 카운트 0회 초기화 처리
+ const handleResetLesson = async () => {
+ if (!lesson) return;
+ await updateLessonCompletion(lesson.id, 0);
+ setLesson({ ...lesson, completed_count: 0, last_studied_at: null });
+ toast.info('이 과의 학습 횟수를 0회로 초기화했습니다.');
  };
 
  // NOTE 텍스트 마크다운 강조(**텍스트**) 간단 렌더러
@@ -831,11 +840,7 @@ export default function LessonPlayerClient({
             {lesson.completed_count > 0 && (
               <button
                 type="button"
-                onClick={async () => {
-                  await updateLessonCompletion(lesson.id, 0);
-                  setLesson({ ...lesson, completed_count: 0, last_studied_at: null });
-                  toast.info('이 과의 학습 횟수를 0회로 초기화했습니다.');
-                }}
+                onClick={handleResetLesson}
                 className="sm:hidden border border-black/10 p-2 text-gray-600 hover:text-gray-900 cursor-pointer shrink-0"
                 title="카운트 0으로 초기화"
               >
@@ -849,11 +854,7 @@ export default function LessonPlayerClient({
             {lesson.completed_count > 0 && (
               <button
                 type="button"
-                onClick={async () => {
-                  await updateLessonCompletion(lesson.id, 0);
-                  setLesson({ ...lesson, completed_count: 0, last_studied_at: null });
-                  toast.info('이 과의 학습 횟수를 0회로 초기화했습니다.');
-                }}
+                onClick={handleResetLesson}
                 className="hidden sm:inline-flex border border-black/10 p-2 text-gray-600 hover:text-gray-900 cursor-pointer"
                 title="카운트 0으로 초기화"
               >

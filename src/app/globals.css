@@ -37,14 +37,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-brand);
 }
 
-/* 다크 배경 컨테이너 내부의 제목 가독성 보정 가드 */
-.bg-black h1, .bg-black h2, .bg-black h3, .bg-black h4,
-.bg-\[\#1F1F1F\] h1, .bg-\[\#1F1F1F\] h2, .bg-\[\#1F1F1F\] h3, .bg-\[\#1F1F1F\] h4,
-.bg-neutral-900 h1, .bg-neutral-900 h2, .bg-neutral-900 h3, .bg-neutral-900 h4,
-[class*="bg-black"] h1, [class*="bg-black"] h2, [class*="bg-black"] h3, [class*="bg-black"] h4 {
-  color: #FFFFFF;
-}
-
 /* 커스텀 스크롤바 */
 ::-webkit-scrollbar {
   width: 8px;
